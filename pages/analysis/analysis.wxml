@@ -39,8 +39,8 @@
         <text class="score-value">{{healthReport.overallScore}}</text>
         <text class="score-label">健康评分</text>
       </view>
-      <view class="score-level" style="color: {{getScoreColor(healthReport.overallScore)}}">
-        {{getScoreLevel(healthReport.overallScore)}}
+      <view class="score-level" style="color: {{healthReport.overallScoreColor}}">
+        {{healthReport.overallScoreLevel}}
       </view>
     </view>
 
@@ -51,12 +51,12 @@
         <view class="dimension-item">
           <view class="dimension-info">
             <text class="dimension-name">体重管理</text>
-            <text class="dimension-score" style="color: {{getScoreColor(healthReport.dimensions.weight.score)}}">
+            <text class="dimension-score" style="color: {{healthReport.dimensions.weight.scoreColor}}">
               {{healthReport.dimensions.weight.score}}分
             </text>
           </view>
           <view class="dimension-bar">
-            <view class="dimension-fill" style="width: {{healthReport.dimensions.weight.score}}%; background: {{getScoreColor(healthReport.dimensions.weight.score)}}"></view>
+            <view class="dimension-fill" style="width: {{healthReport.dimensions.weight.score}}%; background: {{healthReport.dimensions.weight.scoreColor}}"></view>
           </view>
           <text class="dimension-assessment">{{healthReport.dimensions.weight.assessment}}</text>
         </view>
@@ -64,12 +64,12 @@
         <view class="dimension-item">
           <view class="dimension-info">
             <text class="dimension-name">热量控制</text>
-            <text class="dimension-score" style="color: {{getScoreColor(healthReport.dimensions.calorie.score)}}">
+            <text class="dimension-score" style="color: {{healthReport.dimensions.calorie.scoreColor}}">
               {{healthReport.dimensions.calorie.score}}分
             </text>
           </view>
           <view class="dimension-bar">
-            <view class="dimension-fill" style="width: {{healthReport.dimensions.calorie.score}}%; background: {{getScoreColor(healthReport.dimensions.calorie.score)}}"></view>
+            <view class="dimension-fill" style="width: {{healthReport.dimensions.calorie.score}}%; background: {{healthReport.dimensions.calorie.scoreColor}}"></view>
           </view>
           <text class="dimension-assessment">{{healthReport.dimensions.calorie.assessment}}</text>
         </view>
@@ -77,12 +77,12 @@
         <view class="dimension-item">
           <view class="dimension-info">
             <text class="dimension-name">营养均衡</text>
-            <text class="dimension-score" style="color: {{getScoreColor(healthReport.dimensions.nutrition.score)}}">
+            <text class="dimension-score" style="color: {{healthReport.dimensions.nutrition.scoreColor}}">
               {{healthReport.dimensions.nutrition.score}}分
             </text>
           </view>
           <view class="dimension-bar">
-            <view class="dimension-fill" style="width: {{healthReport.dimensions.nutrition.score}}%; background: {{getScoreColor(healthReport.dimensions.nutrition.score)}}"></view>
+            <view class="dimension-fill" style="width: {{healthReport.dimensions.nutrition.score}}%; background: {{healthReport.dimensions.nutrition.scoreColor}}"></view>
           </view>
           <text class="dimension-assessment">{{healthReport.dimensions.nutrition.assessment}}</text>
         </view>
@@ -90,12 +90,12 @@
         <view class="dimension-item">
           <view class="dimension-info">
             <text class="dimension-name">运动达标</text>
-            <text class="dimension-score" style="color: {{getScoreColor(healthReport.dimensions.exercise.score)}}">
+            <text class="dimension-score" style="color: {{healthReport.dimensions.exercise.scoreColor}}">
               {{healthReport.dimensions.exercise.score}}分
             </text>
           </view>
           <view class="dimension-bar">
-            <view class="dimension-fill" style="width: {{healthReport.dimensions.exercise.score}}%; background: {{getScoreColor(healthReport.dimensions.exercise.score)}}"></view>
+            <view class="dimension-fill" style="width: {{healthReport.dimensions.exercise.score}}%; background: {{healthReport.dimensions.exercise.scoreColor}}"></view>
           </view>
           <text class="dimension-assessment">{{healthReport.dimensions.exercise.assessment}}</text>
         </view>

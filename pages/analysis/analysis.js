@@ -69,6 +69,18 @@ Page({
       settings
     });
 
+    // 预计算评分颜色和等级
+    if (report) {
+      report.overallScoreColor = this.getScoreColor(report.overallScore);
+      report.overallScoreLevel = this.getScoreLevel(report.overallScore);
+      
+      ['weight', 'calorie', 'nutrition', 'exercise'].forEach(key => {
+        if (report.dimensions[key]) {
+          report.dimensions[key].scoreColor = this.getScoreColor(report.dimensions[key].score);
+        }
+      });
+    }
+    
     this.setData({ healthReport: report });
   },
 

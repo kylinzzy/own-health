@@ -23,7 +23,8 @@ Page({
 
   onLoad() {
     const today = dateUtil.getToday();
-    this.setData({ currentDate: today });
+    const currentWeekDay = dateUtil.getWeekDay(today);
+    this.setData({ currentDate: today, today, currentWeekDay });
     this.loadData();
   },
 
@@ -76,7 +77,8 @@ Page({
    */
   onDateChange(e) {
     const date = e.detail.value;
-    this.setData({ currentDate: date });
+    const currentWeekDay = dateUtil.getWeekDay(date);
+    this.setData({ currentDate: date, currentWeekDay });
     this.loadData();
   },
 
@@ -86,7 +88,8 @@ Page({
   prevDay() {
     const { currentDate } = this.data;
     const prevDate = dateUtil.addDays(new Date(currentDate), -1);
-    this.setData({ currentDate: prevDate });
+    const currentWeekDay = dateUtil.getWeekDay(prevDate);
+    this.setData({ currentDate: prevDate, currentWeekDay });
     this.loadData();
   },
 
@@ -104,7 +107,8 @@ Page({
     }
     
     const nextDate = dateUtil.addDays(new Date(currentDate), 1);
-    this.setData({ currentDate: nextDate });
+    const currentWeekDay = dateUtil.getWeekDay(nextDate);
+    this.setData({ currentDate: nextDate, currentWeekDay });
     this.loadData();
   },
 

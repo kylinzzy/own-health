@@ -33,7 +33,8 @@ Page({
 
   onLoad() {
     const today = dateUtil.getToday();
-    this.setData({ today });
+    const weekDay = dateUtil.getWeekDay(today);
+    this.setData({ today, weekDay });
     this.loadData();
   },
 

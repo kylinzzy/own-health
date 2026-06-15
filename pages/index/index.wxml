@@ -2,7 +2,7 @@
   <!-- 欢迎区域 -->
   <view class="welcome-section">
     <text class="welcome-date">{{today}}</text>
-    <text class="welcome-text">{{dateUtil.getWeekDay(today)}}，保持健康节奏 💪</text>
+    <text class="welcome-text">{{weekDay}}，保持健康节奏 💪</text>
   </view>
 
   <!-- 今日数据概览 -->

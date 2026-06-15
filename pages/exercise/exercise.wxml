@@ -5,10 +5,10 @@
       <text class="nav-arrow">‹</text>
     </view>
     <view class="date-display">
-      <picker mode="date" value="{{currentDate}}" end="{{dateUtil.getToday()}}" bindchange="onDateChange">
+      <picker mode="date" value="{{currentDate}}" end="{{today}}" bindchange="onDateChange">
         <view class="date-picker">
           <text class="date-text">{{currentDate}}</text>
-          <text class="date-weekday">{{dateUtil.getWeekDay(currentDate)}}</text>
+          <text class="date-weekday">{{currentWeekDay}}</text>
           <text class="date-arrow">▼</text>
         </view>
       </picker>
