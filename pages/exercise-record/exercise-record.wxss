@@ -1,21 +1,21 @@
-/* 运动录入页面样式 */
+/* ========== 运动录入页面 - 清爽浅绿色 ========== */
 
 .container {
-  padding: 16px;
+  padding: var(--space-lg);
   padding-bottom: 100px;
 }
 
 /* 表单卡片 */
 .form-card {
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-card);
 }
 
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: var(--space-xl);
 }
 
 .form-group:last-child {
@@ -24,42 +24,43 @@
 
 .form-label {
   display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: #2C3E50;
-  margin-bottom: 8px;
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
 }
 
 /* 日期显示 */
 .date-display {
-  padding: 12px;
-  background: #F8F9FA;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #2C3E50;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-page);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-base);
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
 /* 类型网格 */
 .type-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 .type-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 4px;
-  background: #F8F9FA;
-  border-radius: 8px;
+  padding: var(--space-md) var(--space-xs);
+  background: var(--bg-page);
+  border-radius: var(--radius-sm);
   border: 2px solid transparent;
   transition: all 0.2s;
 }
 
 .type-item.active {
-  border-color: #2ECC71;
-  background: #F0F9F0;
+  border-color: var(--primary);
+  background: var(--primary-lightest);
 }
 
 .type-icon {
@@ -68,103 +69,109 @@
 }
 
 .type-name {
-  font-size: 11px;
-  color: #2C3E50;
+  font-size: var(--font-xs);
+  color: var(--text-primary);
   text-align: center;
+  font-weight: 600;
 }
 
 /* 输入框 */
 .form-input {
   width: 100%;
-  padding: 12px;
-  background: #F8F9FA;
-  border-radius: 8px;
+  padding: 14px var(--space-lg);
+  background: var(--bg-page);
+  border-radius: var(--radius-sm);
   font-size: 16px;
-  line-height: 1.6;
-  color: #2C3E50;
+  line-height: 1.5;
+  color: var(--text-primary);
   box-sizing: border-box;
-  min-height: 44px;
+  border: 1.5px solid var(--gray-200);
+  min-height: 48px;
 }
 
 .input-with-unit {
   display: flex;
   align-items: center;
-  background: #F8F9FA;
-  border-radius: 8px;
-  padding: 0 12px;
+  background: var(--bg-page);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--space-lg);
+  border: 1.5px solid var(--gray-200);
 }
 
 .input-with-unit .form-input {
   flex: 1;
   background: transparent;
-  padding: 12px 0;
+  padding: 14px 0;
   font-size: 16px;
-  line-height: 1.6;
-  min-height: 44px;
+  line-height: 1.5;
+  min-height: 48px;
+  border: none;
 }
 
 .input-unit {
-  font-size: 14px;
-  color: #7F8C8D;
-  margin-left: 8px;
+  font-size: var(--font-md);
+  color: var(--text-secondary);
+  margin-left: var(--space-sm);
+  font-weight: 500;
 }
 
 /* 强度选项 */
 .intensity-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 .intensity-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px;
-  background: #F8F9FA;
-  border-radius: 8px;
+  padding: var(--space-md);
+  background: var(--bg-page);
+  border-radius: var(--radius-sm);
   border: 2px solid transparent;
   transition: all 0.2s;
 }
 
 .intensity-item.active {
-  border-color: #2ECC71;
-  background: #F0F9F0;
+  border-color: var(--primary);
+  background: var(--primary-lightest);
 }
 
 .intensity-dot {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   margin-bottom: 6px;
 }
 
 .intensity-dot.low {
-  background: #2ECC71;
+  background: var(--primary);
 }
 
 .intensity-dot.medium {
-  background: #F39C12;
+  background: var(--warning);
 }
 
 .intensity-dot.high {
-  background: #E74C3C;
+  background: var(--danger);
 }
 
 .intensity-dot.veryHigh {
-  background: #9B59B6;
+  background: #AB47BC;
 }
 
 .intensity-name {
-  font-size: 13px;
-  font-weight: 500;
-  color: #2C3E50;
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 2px;
 }
 
 .intensity-desc {
-  font-size: 11px;
-  color: #7F8C8D;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 /* 热量预览 */
@@ -172,27 +179,29 @@
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 4px;
-  padding: 16px;
-  background: #FFF5F5;
-  border-radius: 8px;
-  margin-top: 12px;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  background: var(--danger-light);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
 }
 
 .preview-label {
-  font-size: 14px;
-  color: #7F8C8D;
+  font-size: var(--font-md);
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .preview-value {
-  font-size: 28px;
-  font-weight: 700;
-  color: #E74C3C;
+  font-size: var(--font-3xl);
+  font-weight: 800;
+  color: var(--danger);
 }
 
 .preview-unit {
-  font-size: 14px;
-  color: #7F8C8D;
+  font-size: var(--font-md);
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 /* 底部按钮 */
@@ -202,10 +211,10 @@
   left: 0;
   right: 0;
   display: flex;
-  gap: 12px;
-  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-  background: #FFFFFF;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg) calc(var(--space-md) + env(safe-area-inset-bottom));
+  background: var(--bg-white);
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
   z-index: 100;
 }
 
@@ -215,17 +224,18 @@
   align-items: center;
   justify-content: center;
   padding: 14px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 500;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-md);
+  font-weight: 600;
 }
 
 .btn-ghost {
-  background: #F5F5F5;
-  color: #7F8C8D;
+  background: var(--bg-page);
+  color: var(--text-secondary);
 }
 
 .btn-primary {
-  background: #2ECC71;
-  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--text-white);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
 }

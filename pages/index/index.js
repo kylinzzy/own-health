@@ -1,15 +1,15 @@
 /**
- * 首页 - 数据概览
+ * 首页 - 数据概览与功能入口
  * 展示今日关键数据和健康状态
  */
 
 const storage = require('../../utils/storage');
 const dateUtil = require('../../utils/date');
-const analysisUtil = require('../../utils/analysis');
 
 Page({
   data: {
     today: '',
+    weekDay: '',
     settings: null,
     todayDiet: [],
     todayExercise: [],
@@ -20,14 +20,16 @@ Page({
       deficit: 0
     },
     quickActions: [
-      { icon: '⚖️', label: '记体重', path: '/pages/weight-record/weight-record' },
-      { icon: '🍽️', label: '记饮食', path: '/pages/diet/diet' },
-      { icon: '🏃', label: '记运动', path: '/pages/exercise/exercise' },
-      { icon: '📊', label: '看分析', path: '/pages/analysis/analysis' }
+      { icon: '⚖', label: '记体重', path: '/pages/weight-record/weight-record', bg: '#E8F5E9' },
+      { icon: '🥗', label: '记饮食', path: '/pages/diet/diet', bg: '#E1F5FE' },
+      { icon: '🏃', label: '记运动', path: '/pages/exercise/exercise', bg: '#FFF3E0' },
+      { icon: '📊', label: '看分析', path: '/pages/analysis/analysis', bg: '#F3E5F5' }
     ],
     featureCards: [
-      { icon: '📖', title: '膳食指南', desc: '科学饮食参考', path: '/pages/guide/guide', color: '#3498DB' },
-      { icon: '🥗', title: '减脂食谱', desc: '低卡美味食谱', path: '/pages/recipes/recipes', color: '#2ECC71' }
+      { icon: '📖', title: '膳食指南', desc: '科学饮食权威参考', path: '/pages/guide/guide', color: '#29B6F6', bg: '#E1F5FE' },
+      { icon: '🥘', title: '减脂食谱', desc: '低卡美味轻松做', path: '/pages/recipes/recipes', color: '#4CAF50', bg: '#E8F5E9' },
+      { icon: '📉', title: '体重追踪', desc: '趋势变化一目了然', path: '/pages/weight/weight', color: '#FFA726', bg: '#FFF3E0' },
+      { icon: '🧠', title: '健康分析', desc: '智能评估调整建议', path: '/pages/analysis/analysis', color: '#AB47BC', bg: '#F3E5F5' }
     ]
   },
 
@@ -48,15 +50,15 @@ Page({
   loadData() {
     const today = this.data.today;
     const settings = storage.get('user_settings', {});
-    
+
     // 今日饮食
     const allDiet = storage.get('diet_records', []);
     const todayDiet = allDiet.filter(r => r.date === today);
-    
+
     // 今日运动
     const allExercise = storage.get('exercise_records', []);
     const todayExercise = allExercise.filter(r => r.date === today);
-    
+
     // 最新体重
     const weightRecords = storage.get('weight_records', []);
     const latestWeight = weightRecords.length > 0 ? weightRecords[weightRecords.length - 1] : null;

@@ -1,148 +1,106 @@
-/* 运动记录页面样式 */
-
-/* 日期栏 */
-.date-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #FFFFFF;
-  padding: 12px 16px;
-  margin-bottom: 12px;
-  border-radius: 0 0 12px 12px;
-}
-
-.date-nav-btn {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #F5F5F5;
-  border-radius: 50%;
-}
-
-.nav-arrow {
-  font-size: 20px;
-  color: #2C3E50;
-  font-weight: 300;
-}
-
-.date-display {
-  flex: 1;
-  text-align: center;
-}
-
-.date-picker {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.date-text {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2C3E50;
-}
-
-.date-weekday {
-  font-size: 13px;
-  color: #7F8C8D;
-}
-
-.date-arrow {
-  font-size: 10px;
-  color: #BDC3C7;
-  margin-left: 4px;
-}
+/* ========== 运动记录页面 - 清爽浅绿色 ========== */
 
 /* 热量缺口卡片 */
 .deficit-card {
-  background: linear-gradient(135deg, #2ECC71 0%, #27AE60 100%);
-  border-radius: 16px;
-  padding: 24px 20px;
-  margin-bottom: 12px;
-  margin-top: 8px;
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 50%, #43A047 100%);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-xl);
+  margin-bottom: var(--space-lg);
+  margin-top: var(--space-sm);
+  color: var(--text-white);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.deficit-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .deficit-header {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 4px;
-  margin-bottom: 8px;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  position: relative;
+  z-index: 1;
 }
 
 .deficit-title {
-  font-size: 14px;
+  font-size: var(--font-md);
   opacity: 0.9;
-  margin-right: 8px;
+  margin-right: var(--space-sm);
+  font-weight: 600;
 }
 
 .deficit-value {
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1px;
 }
 
 .deficit-value.negative {
-  color: #A8E6CF;
+  color: #C8E6C9;
 }
 
 .deficit-value.positive {
-  color: #FFE5E5;
+  color: #FFCDD2;
 }
 
 .deficit-unit {
-  font-size: 14px;
+  font-size: var(--font-md);
   opacity: 0.8;
+  font-weight: 500;
 }
 
 .deficit-hint {
-  font-size: 14px;
+  font-size: var(--font-sm);
   opacity: 0.9;
-  line-height: 1.4;
-  margin-top: 4px;
+  line-height: 1.5;
+  margin-top: var(--space-xs);
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
 }
 
 /* 周统计 */
 .weekly-stats {
-  margin-bottom: 12px;
-}
-
-.stats-header {
-  margin-bottom: 12px;
-}
-
-.stats-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2C3E50;
+  margin-bottom: var(--space-lg);
 }
 
 .stats-grid {
   display: flex;
   justify-content: space-around;
-  padding: 8px 0;
+  padding: var(--space-md) 0;
 }
 
 .stats-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 4px;
 }
 
 .stats-number {
-  font-size: 24px;
-  font-weight: 700;
-  color: #2ECC71;
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--primary-dark);
+  line-height: 1.1;
 }
 
 .stats-label {
-  font-size: 12px;
-  color: #7F8C8D;
-  margin-top: 2px;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  font-weight: 600;
 }
 
 /* 运动列表 */
@@ -150,43 +108,25 @@
   margin-bottom: 80px;
 }
 
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  padding: 0 4px;
-}
-
-.section-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2C3E50;
-}
-
-.record-count {
-  font-size: 12px;
-  color: #7F8C8D;
-}
-
 .exercise-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-md);
 }
 
 .exercise-item {
   display: flex;
   align-items: center;
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 14px 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
 }
 
 .exercise-icon {
-  font-size: 28px;
-  margin-right: 12px;
+  font-size: 32px;
+  margin-right: var(--space-lg);
+  flex-shrink: 0;
 }
 
 .exercise-info {
@@ -195,61 +135,65 @@
 
 .exercise-name {
   display: block;
-  font-size: 15px;
-  font-weight: 600;
-  color: #2C3E50;
-  margin-bottom: 4px;
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
 }
 
 .exercise-meta {
   display: flex;
-  gap: 6px;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
 }
 
 .meta-tag {
-  font-size: 11px;
-  color: #7F8C8D;
-  background: #F5F5F5;
-  padding: 2px 8px;
-  border-radius: 10px;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  background: var(--bg-page);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-weight: 500;
 }
 
 .meta-tag.intensity-low {
-  color: #2ECC71;
-  background: rgba(46, 204, 113, 0.1);
+  color: var(--primary-dark);
+  background: var(--primary-lightest);
 }
 
 .meta-tag.intensity-medium {
-  color: #F39C12;
-  background: rgba(243, 156, 18, 0.1);
+  color: #E65100;
+  background: var(--warning-light);
 }
 
 .meta-tag.intensity-high {
-  color: #E74C3C;
-  background: rgba(231, 76, 60, 0.1);
+  color: #C62828;
+  background: var(--danger-light);
 }
 
 .meta-tag.intensity-veryHigh {
-  color: #9B59B6;
-  background: rgba(155, 89, 182, 0.1);
+  color: #6A1B9A;
+  background: #F3E5F5;
 }
 
 .exercise-burn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 12px;
+  margin-right: var(--space-md);
 }
 
 .burn-value {
-  font-size: 18px;
-  font-weight: 700;
-  color: #E74C3C;
+  font-size: var(--font-xl);
+  font-weight: 800;
+  color: var(--danger);
+  line-height: 1.1;
 }
 
 .burn-unit {
   font-size: 10px;
-  color: #7F8C8D;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .exercise-actions {
@@ -257,9 +201,10 @@
 }
 
 .delete-btn {
-  font-size: 12px;
-  color: #E74C3C;
-  padding: 4px 8px;
+  font-size: var(--font-sm);
+  color: var(--danger);
+  padding: var(--space-sm) var(--space-md);
+  font-weight: 500;
 }
 
 /* 空状态 */
@@ -267,46 +212,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 16px;
-  background: #FFFFFF;
-  border-radius: 12px;
+  padding: 48px var(--space-xl);
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
 }
 
 .empty-icon {
-  font-size: 48px;
-  margin-bottom: 12px;
+  font-size: 56px;
+  margin-bottom: var(--space-lg);
+  opacity: 0.5;
 }
 
 .empty-text {
-  font-size: 15px;
-  color: #2C3E50;
-  margin-bottom: 6px;
+  font-size: var(--font-md);
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
 }
 
 .empty-subtext {
-  font-size: 13px;
-  color: #7F8C8D;
-}
-
-/* 浮动按钮 */
-.fab {
-  position: fixed;
-  right: 16px;
-  bottom: calc(16px + env(safe-area-inset-bottom) + 60px);
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #2ECC71;
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  font-weight: 300;
-  box-shadow: 0 4px 16px rgba(46, 204, 113, 0.4);
-  z-index: 100;
-}
-
-.fab:active {
-  transform: scale(0.95);
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
 }

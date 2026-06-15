@@ -1,88 +1,88 @@
-/* 膳食指南页面样式 */
+/* ========== 膳食指南页面 - 清爽浅绿色 ========== */
 
 /* 搜索栏 */
 .search-bar {
-  padding: 12px 16px;
-  background: #FFFFFF;
-  margin-bottom: 12px;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-white);
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
 }
 
 .search-input-wrapper {
   display: flex;
   align-items: center;
-  background: #F5F5F5;
-  border-radius: 20px;
-  padding: 8px 12px;
+  background: var(--bg-page);
+  border-radius: var(--radius-full);
+  padding: var(--space-sm) var(--space-lg);
 }
 
 .search-icon {
-  font-size: 16px;
-  margin-right: 8px;
-  color: #7F8C8D;
+  font-size: var(--font-md);
+  margin-right: var(--space-sm);
+  color: var(--text-light);
 }
 
 .search-input {
   flex: 1;
-  font-size: 14px;
-  color: #2C3E50;
-}
-
-.search-input::placeholder {
-  color: #BDC3C7;
+  font-size: var(--font-base);
+  color: var(--text-primary);
 }
 
 .clear-icon {
-  font-size: 14px;
-  color: #BDC3C7;
-  padding: 4px;
+  font-size: var(--font-md);
+  color: var(--text-light);
+  padding: var(--space-xs);
 }
 
 /* 搜索结果 */
 .search-results {
-  padding: 0 16px;
+  padding: 0 var(--space-lg);
 }
 
 .result-count {
-  font-size: 12px;
-  color: #7F8C8D;
-  margin-bottom: 8px;
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
 }
 
 .result-item {
-  margin-bottom: 8px;
+  margin-bottom: var(--space-sm);
 }
 
 .result-header {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-sm);
 }
 
 .result-icon {
   font-size: 20px;
-  margin-right: 8px;
+  margin-right: var(--space-sm);
 }
 
 .result-title {
   flex: 1;
-  font-size: 15px;
-  font-weight: 600;
-  color: #2C3E50;
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .result-type {
-  font-size: 11px;
-  color: #2ECC71;
-  background: rgba(46, 204, 113, 0.1);
-  padding: 2px 8px;
-  border-radius: 10px;
+  font-size: var(--font-xs);
+  color: var(--primary-dark);
+  background: var(--primary-lightest);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
 }
 
 .result-content {
-  font-size: 13px;
-  color: #2C3E50;
+  font-size: var(--font-sm);
+  color: var(--text-primary);
   line-height: 1.6;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-sm);
 }
 
 .result-tips {
@@ -91,28 +91,31 @@
 }
 
 .tip-tag {
-  font-size: 11px;
-  color: #7F8C8D;
-  background: #F5F5F5;
-  padding: 3px 8px;
-  border-radius: 4px;
-  margin-right: 6px;
-  margin-bottom: 4px;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  background: var(--bg-page);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-right: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
 }
 
 .result-note {
-  font-size: 12px;
-  color: #F39C12;
-  margin-top: 6px;
+  font-size: var(--font-sm);
+  color: var(--warning);
+  margin-top: var(--space-sm);
+  font-weight: 500;
 }
 
 /* 标签页导航 */
 .tab-nav {
   display: flex;
-  background: #FFFFFF;
-  padding: 0 16px;
-  margin-bottom: 12px;
-  border-radius: 0 0 12px 12px;
+  background: var(--bg-white);
+  padding: 0 var(--space-lg);
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
 }
 
 .tab-item {
@@ -120,7 +123,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px 0;
+  padding: var(--space-md) 0;
   position: relative;
 }
 
@@ -131,7 +134,7 @@
   left: 20%;
   right: 20%;
   height: 3px;
-  background: #2ECC71;
+  background: var(--primary);
   border-radius: 2px;
 }
 
@@ -141,35 +144,19 @@
 }
 
 .tab-label {
-  font-size: 12px;
-  color: #7F8C8D;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .tab-item.active .tab-label {
-  color: #2ECC71;
-  font-weight: 500;
+  color: var(--primary-dark);
+  font-weight: 700;
 }
 
 /* 内容区域 */
 .tab-content {
-  padding: 0 16px 24px;
-}
-
-.section-header {
-  margin-bottom: 16px;
-}
-
-.section-title {
-  display: block;
-  font-size: 18px;
-  font-weight: 600;
-  color: #2C3E50;
-  margin-bottom: 4px;
-}
-
-.section-desc {
-  font-size: 13px;
-  color: #7F8C8D;
+  padding: 0 var(--space-lg) var(--space-2xl);
 }
 
 /* 膳食宝塔 */
@@ -179,22 +166,22 @@
 }
 
 .pagoda-level {
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  box-shadow: var(--shadow-card);
 }
 
 .level-content {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-md);
 }
 
 .level-icon {
   font-size: 32px;
-  margin-right: 12px;
+  margin-right: var(--space-md);
 }
 
 .level-info {
@@ -203,16 +190,16 @@
 
 .level-name {
   display: block;
-  font-size: 16px;
-  font-weight: 600;
-  color: #2C3E50;
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .level-recommendation {
-  font-size: 13px;
-  color: #2ECC71;
-  font-weight: 500;
+  font-size: var(--font-sm);
+  color: var(--primary-dark);
+  font-weight: 600;
 }
 
 .level-tips {
@@ -222,51 +209,52 @@
 }
 
 .tip-item {
-  font-size: 12px;
-  color: #7F8C8D;
-  margin-right: 12px;
-  margin-bottom: 4px;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  margin-right: var(--space-lg);
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
 }
 
 /* 不同层级颜色 */
-.level-5 { border-left: 4px solid #E74C3C; }
-.level-4 { border-left: 4px solid #F39C12; }
-.level-3 { border-left: 4px solid #9B59B6; }
-.level-2 { border-left: 4px solid #3498DB; }
-.level-1 { border-left: 4px solid #2ECC71; }
+.level-5 { border-left: 4px solid var(--danger); }
+.level-4 { border-left: 4px solid var(--warning); }
+.level-3 { border-left: 4px solid #AB47BC; }
+.level-2 { border-left: 4px solid var(--info); }
+.level-1 { border-left: 4px solid var(--primary); }
 
 /* 营养素网格 */
 .nutrient-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: var(--space-md);
 }
 
 .nutrient-card {
-  padding: 14px;
+  padding: var(--space-lg);
 }
 
 .nutrient-header {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-md);
 }
 
 .nutrient-icon {
   font-size: 24px;
-  margin-right: 8px;
+  margin-right: var(--space-sm);
 }
 
 .nutrient-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #2C3E50;
+  font-size: var(--font-base);
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .nutrient-values {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-sm);
 }
 
 .nutrient-value {
@@ -275,144 +263,148 @@
 }
 
 .value-number {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2ECC71;
+  font-size: var(--font-xl);
+  font-weight: 800;
+  color: var(--primary-dark);
 }
 
 .value-unit {
-  font-size: 11px;
-  color: #7F8C8D;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
   margin-left: 2px;
+  font-weight: 500;
 }
 
 .value-gender {
-  font-size: 11px;
-  color: #BDC3C7;
+  font-size: var(--font-xs);
+  color: var(--text-light);
   margin-left: 4px;
 }
 
 .nutrient-divider {
-  margin: 0 8px;
-  color: #BDC3C7;
-  font-size: 14px;
+  margin: 0 var(--space-sm);
+  color: var(--text-light);
+  font-size: var(--font-md);
 }
 
 .nutrient-note {
-  font-size: 11px;
-  color: #7F8C8D;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 /* 人群列表 */
 .group-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-md);
 }
 
 .group-card {
-  padding: 16px;
+  padding: var(--space-lg);
 }
 
 .group-header {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-md);
 }
 
 .group-icon {
   font-size: 28px;
-  margin-right: 10px;
+  margin-right: var(--space-md);
 }
 
 .group-name {
   flex: 1;
-  font-size: 16px;
-  font-weight: 600;
-  color: #2C3E50;
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .group-arrow {
   font-size: 20px;
-  color: #BDC3C7;
+  color: var(--text-light);
 }
 
 .group-principles {
-  margin-bottom: 10px;
+  margin-bottom: var(--space-md);
 }
 
 .principle-item {
   display: block;
-  font-size: 13px;
-  color: #2C3E50;
+  font-size: var(--font-sm);
+  color: var(--text-primary);
   line-height: 1.8;
-  padding-left: 38px;
+  padding-left: 40px;
 }
 
 .group-warnings {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 38px;
+  padding-left: 40px;
 }
 
 .warning-tag {
-  font-size: 11px;
-  color: #E74C3C;
-  background: rgba(231, 76, 60, 0.08);
-  padding: 3px 8px;
-  border-radius: 4px;
-  margin-right: 6px;
-  margin-bottom: 4px;
+  font-size: var(--font-xs);
+  color: var(--danger);
+  background: var(--danger-light);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-right: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
 }
 
 /* 禁忌列表 */
 .taboo-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-md);
 }
 
 .taboo-card {
-  padding: 16px;
+  padding: var(--space-lg);
 }
 
 .taboo-header {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-md);
 }
 
 .taboo-icon {
   font-size: 24px;
-  margin-right: 10px;
+  margin-right: var(--space-md);
 }
 
 .taboo-category {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2C3E50;
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .taboo-items {
-  padding-left: 34px;
+  padding-left: 36px;
 }
 
 .taboo-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-sm);
 }
 
 .taboo-dot {
-  color: #E74C3C;
-  margin-right: 8px;
-  font-size: 14px;
+  color: var(--danger);
+  margin-right: var(--space-sm);
+  font-size: var(--font-md);
   line-height: 1.5;
+  font-weight: 700;
 }
 
 .taboo-text {
   flex: 1;
-  font-size: 13px;
-  color: #2C3E50;
-  line-height: 1.5;
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  line-height: 1.6;
 }

@@ -15,14 +15,14 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#F2F6F3",
     "navigationBarTitleText": "健康瘦身",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#F8F9FA"
+    "backgroundColor": "#F2F6F3"
   },
   "tabBar": {
     "color": "#7F8C8D",
-    "selectedColor": "#2ECC71",
+    "selectedColor": "#4CAF50",
     "backgroundColor": "#ffffff",
     "borderStyle": "white",
     "list": [

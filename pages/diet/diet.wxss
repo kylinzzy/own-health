@@ -1,159 +1,107 @@
-/* 饮食记录页面样式 */
-
-/* 日期栏 */
-.date-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #FFFFFF;
-  padding: 12px 16px;
-  margin-bottom: 12px;
-  border-radius: 0 0 12px 12px;
-}
-
-.date-nav-btn {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #F5F5F5;
-  border-radius: 50%;
-}
-
-.nav-arrow {
-  font-size: 20px;
-  color: #2C3E50;
-  font-weight: 300;
-}
-
-.date-display {
-  flex: 1;
-  text-align: center;
-}
-
-.date-picker {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.date-text {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2C3E50;
-}
-
-.date-weekday {
-  font-size: 13px;
-  color: #7F8C8D;
-}
-
-.date-arrow {
-  font-size: 10px;
-  color: #BDC3C7;
-  margin-left: 4px;
-}
+/* ========== 饮食记录页面 - 清爽浅绿色 ========== */
 
 /* 每日统计 */
 .daily-stats {
-  margin-bottom: 12px;
+  margin-bottom: var(--space-lg);
+  border-left: 4px solid var(--primary);
 }
 
 .stats-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-lg);
 }
 
 .stats-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2C3E50;
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .stats-calories {
-  font-size: 18px;
-  font-weight: 700;
-  color: #2ECC71;
+  font-size: var(--font-xl);
+  font-weight: 800;
+  color: var(--primary-dark);
 }
 
+/* 营养素进度条 */
 .nutrition-bars {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-md);
 }
 
 .nutrition-bar-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .bar-label {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  color: #7F8C8D;
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
 }
 
 .bar-track {
   width: 100%;
-  height: 6px;
-  background: #ECF0F1;
-  border-radius: 3px;
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: var(--radius-full);
   overflow: hidden;
 }
 
 .bar-fill {
   height: 100%;
-  border-radius: 3px;
-  transition: width 0.3s ease;
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
 }
 
 .bar-fill.protein {
-  background: #E74C3C;
+  background: linear-gradient(90deg, #EF5350, #E57373);
 }
 
 .bar-fill.carbs {
-  background: #3498DB;
+  background: linear-gradient(90deg, #29B6F6, #4FC3F7);
 }
 
 .bar-fill.fat {
-  background: #F39C12;
+  background: linear-gradient(90deg, #FFA726, #FFB74D);
 }
 
 /* 餐次卡片 */
 .meals-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: var(--space-md);
+  margin-bottom: var(--space-3xl);
 }
 
 .meal-card {
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
 }
 
 .meal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-md);
 }
 
 .meal-info {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-md);
 }
 
 .meal-icon {
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .meal-title-group {
@@ -162,47 +110,50 @@
 }
 
 .meal-name {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2C3E50;
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .meal-time {
-  font-size: 11px;
-  color: #7F8C8D;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
   margin-top: 2px;
+  font-weight: 500;
 }
 
 .meal-calories {
   display: flex;
   align-items: baseline;
-  gap: 2px;
+  gap: 3px;
 }
 
 .calories-value {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2ECC71;
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--primary-dark);
+  line-height: 1;
 }
 
 .calories-unit {
-  font-size: 11px;
-  color: #7F8C8D;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
-/* 餐次记录 */
+/* 餐次记录 - 左滑删除 */
 .meal-records {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
 .record-item {
   position: relative;
   display: flex;
   align-items: center;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   transition: transform 0.2s ease;
 }
@@ -212,9 +163,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 12px;
-  background: #F8F9FA;
-  border-radius: 8px;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-page);
+  border-radius: var(--radius-sm);
   z-index: 1;
 }
 
@@ -224,22 +175,25 @@
 
 .record-name {
   display: block;
-  font-size: 14px;
-  color: #2C3E50;
+  font-size: var(--font-base);
+  color: var(--text-primary);
+  font-weight: 600;
   margin-bottom: 4px;
 }
 
 .record-nutrition {
   display: flex;
-  gap: 6px;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
 }
 
 .nutrition-tag {
   font-size: 10px;
-  color: #7F8C8D;
-  background: #FFFFFF;
-  padding: 2px 6px;
-  border-radius: 4px;
+  color: var(--text-secondary);
+  background: var(--bg-white);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 500;
 }
 
 .record-delete {
@@ -247,17 +201,19 @@
   right: 0;
   top: 0;
   bottom: 0;
-  width: 80px;
+  width: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #E74C3C;
+  background: var(--danger);
   z-index: 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .delete-text {
-  font-size: 14px;
-  color: #FFFFFF;
+  font-size: var(--font-sm);
+  color: var(--text-white);
+  font-weight: 600;
 }
 
 /* 添加按钮 */
@@ -265,23 +221,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  border: 1px dashed #D5DBDB;
-  border-radius: 8px;
-  gap: 6px;
+  padding: var(--space-md);
+  border: 2px dashed var(--primary-lighter);
+  border-radius: var(--radius-sm);
+  gap: var(--space-sm);
+  background: var(--primary-lightest);
 }
 
 .add-icon {
   font-size: 18px;
-  color: #2ECC71;
-  font-weight: 300;
+  color: var(--primary);
+  font-weight: 500;
 }
 
 .add-text {
-  font-size: 13px;
-  color: #7F8C8D;
+  font-size: var(--font-sm);
+  color: var(--primary-dark);
+  font-weight: 600;
 }
 
 .add-btn:active {
-  background: #F8F9FA;
+  background: var(--primary-lighter);
 }
