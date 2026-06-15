@@ -1,0 +1,55 @@
+<view class="container" wx:if="{{category}}">
+  <!-- 头部 -->
+  <view class="detail-header">
+    <text class="header-icon">{{category.icon}}</text>
+    <text class="header-title">{{category.name}}</text>
+    <text class="header-subtitle">饮食原则与建议</text>
+  </view>
+
+  <!-- 核心原则 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">📋</text>
+      <text>核心饮食原则</text>
+    </view>
+    <view class="principles-list">
+      <view 
+        wx:for="{{category.principles}}" 
+        wx:key="index"
+        class="principle-item"
+      >
+        <view class="principle-number">{{index + 1}}</view>
+        <text class="principle-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 注意事项 -->
+  <view class="section" wx:if="{{category.warnings}}">
+    <view class="section-title">
+      <text class="title-icon">⚠️</text>
+      <text>注意事项</text>
+    </view>
+    <view class="warnings-list">
+      <view 
+        wx:for="{{category.warnings}}" 
+        wx:key="index"
+        class="warning-item"
+      >
+        <text class="warning-icon">!</text>
+        <text class="warning-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 通用建议 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">💡</text>
+      <text>实用建议</text>
+    </view>
+    <view class="tips-card">
+      <text class="tips-text">建议定期记录体重和饮食情况，根据实际情况调整饮食计划。如有特殊健康状况，请咨询专业医生或营养师。</text>
+    </view>
+  </view>
+</view>

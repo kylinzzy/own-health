@@ -1,0 +1,107 @@
+<view class="container">
+  <view class="form-card">
+    <!-- 餐次显示 -->
+    <view class="form-group">
+      <text class="form-label">餐次</text>
+      <view class="meal-display">
+        <text class="meal-icon">{{mealTypes[mealType].icon}}</text>
+        <text class="meal-name">{{mealTypes[mealType].label}}</text>
+        <text class="meal-time">{{mealTypes[mealType].time}}</text>
+      </view>
+    </view>
+
+    <!-- 日期 -->
+    <view class="form-group">
+      <text class="form-label">日期</text>
+      <view class="date-display">{{date}}</view>
+    </view>
+
+    <!-- 菜品名称 -->
+    <view class="form-group">
+      <text class="form-label">菜品名称 *</text>
+      <input 
+        class="form-input" 
+        type="text" 
+        placeholder="例如：鸡胸肉沙拉"
+        value="{{name}}"
+        bindinput="onNameInput"
+      />
+    </view>
+
+    <!-- 热量 -->
+    <view class="form-group">
+      <text class="form-label">热量 (千卡) *</text>
+      <view class="input-with-unit">
+        <input 
+          class="form-input" 
+          type="digit" 
+          placeholder="请输入热量"
+          value="{{calories}}"
+          bindinput="onCaloriesInput"
+        />
+        <text class="input-unit">千卡</text>
+      </view>
+    </view>
+
+    <!-- 营养素（可选） -->
+    <view class="form-group">
+      <text class="form-label">营养素（可选）</text>
+      <view class="nutrition-inputs">
+        <view class="nutrition-input-item">
+          <text class="nutrition-label">蛋白质</text>
+          <view class="input-with-unit small">
+            <input 
+              class="form-input" 
+              type="digit" 
+              placeholder="0"
+              value="{{protein}}"
+              bindinput="onProteinInput"
+            />
+            <text class="input-unit">g</text>
+          </view>
+        </view>
+        <view class="nutrition-input-item">
+          <text class="nutrition-label">碳水</text>
+          <view class="input-with-unit small">
+            <input 
+              class="form-input" 
+              type="digit" 
+              placeholder="0"
+              value="{{carbs}}"
+              bindinput="onCarbsInput"
+            />
+            <text class="input-unit">g</text>
+          </view>
+        </view>
+        <view class="nutrition-input-item">
+          <text class="nutrition-label">脂肪</text>
+          <view class="input-with-unit small">
+            <input 
+              class="form-input" 
+              type="digit" 
+              placeholder="0"
+              value="{{fat}}"
+              bindinput="onFatInput"
+            />
+            <text class="input-unit">g</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 提示 -->
+  <view class="tips-section">
+    <text class="tips-title">💡 热量参考</text>
+    <text class="tips-item">• 米饭1碗(150g) ≈ 180千卡</text>
+    <text class="tips-item">• 鸡蛋1个 ≈ 70千卡</text>
+    <text class="tips-item">• 鸡胸肉100g ≈ 130千卡</text>
+    <text class="tips-item">• 苹果1个 ≈ 80千卡</text>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-bar">
+    <view class="btn btn-ghost" bindtap="cancel">取消</view>
+    <view class="btn btn-primary" bindtap="saveRecord">保存</view>
+  </view>
+</view>

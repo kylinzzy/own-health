@@ -1,0 +1,171 @@
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrapper">
+      <text class="search-icon">🔍</text>
+      <input 
+        class="search-input" 
+        type="text" 
+        placeholder="搜索热量标准、饮食禁忌、配比建议..."
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+      />
+      <text wx:if="{{searchKeyword}}" class="clear-icon" bindtap="clearSearch">✕</text>
+    </view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view wx:if="{{searchKeyword && searchResults.length > 0}}" class="search-results">
+    <view class="result-count">找到 {{searchResults.length}} 条结果</view>
+    <view wx:for="{{searchResults}}" wx:key="index" class="result-item card">
+      <view class="result-header">
+        <text class="result-icon">{{item.icon}}</text>
+        <text class="result-title">{{item.title}}</text>
+        <text class="result-type">{{item.type === 'pagoda' ? '膳食宝塔' : item.type === 'nutrients' ? '营养素' : item.type === 'groups' ? '人群原则' : '饮食禁忌'}}</text>
+      </view>
+      <view class="result-content">{{item.content}}</view>
+      <view wx:if="{{item.tips}}" class="result-tips">
+        <text wx:for="{{item.tips}}" wx:for-item="tip" wx:key="tip" class="tip-tag">{{tip}}</text>
+      </view>
+      <view wx:if="{{item.note}}" class="result-note">{{item.note}}</view>
+    </view>
+  </view>
+
+  <!-- 搜索无结果 -->
+  <view wx:if="{{searchKeyword && searchResults.length === 0}}" class="empty-state">
+    <text class="empty-text">未找到相关内容，换个关键词试试</text>
+  </view>
+
+  <!-- 标签页导航 -->
+  <view wx:if="{{!searchKeyword}}" class="tab-nav">
+    <view 
+      wx:for="{{tabs}}" 
+      wx:key="key"
+      class="tab-item {{activeTab === item.key ? 'active' : ''}}"
+      data-tab="{{item.key}}"
+      bindtap="switchTab"
+    >
+      <text class="tab-icon">{{item.icon}}</text>
+      <text class="tab-label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <!-- 膳食宝塔 -->
+  <view wx:if="{{!searchKeyword && activeTab === 'pagoda'}}" class="tab-content">
+    <view class="section-header">
+      <text class="section-title">{{guideData.pagoda.title}}</text>
+      <text class="section-desc">{{guideData.pagoda.description}}</text>
+    </view>
+    
+    <view class="pagoda-container">
+      <view 
+        wx:for="{{guideData.pagoda.levels}}" 
+        wx:key="level"
+        class="pagoda-level level-{{item.level}}"
+      >
+        <view class="level-content">
+          <text class="level-icon">{{item.icon}}</text>
+          <view class="level-info">
+            <text class="level-name">{{item.name}}</text>
+            <text class="level-recommendation">{{item.recommendation}}</text>
+          </view>
+        </view>
+        <view class="level-tips">
+          <text wx:for="{{item.tips}}" wx:for-item="tip" wx:key="tip" class="tip-item">• {{tip}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 营养素推荐 -->
+  <view wx:if="{{!searchKeyword && activeTab === 'nutrients'}}" class="tab-content">
+    <view class="section-header">
+      <text class="section-title">{{guideData.nutrients.title}}</text>
+      <text class="section-desc">{{guideData.nutrients.description}}</text>
+    </view>
+
+    <view class="nutrient-grid">
+      <view 
+        wx:for="{{guideData.nutrients.items}}" 
+        wx:key="name"
+        class="nutrient-card card"
+      >
+        <view class="nutrient-header">
+          <text class="nutrient-icon">{{item.icon}}</text>
+          <text class="nutrient-name">{{item.name}}</text>
+        </view>
+        <view class="nutrient-values">
+          <view class="nutrient-value">
+            <text class="value-number">{{item.male}}</text>
+            <text class="value-unit">{{item.unit}}</text>
+            <text class="value-gender">男</text>
+          </view>
+          <view class="nutrient-divider">/</view>
+          <view class="nutrient-value">
+            <text class="value-number">{{item.female}}</text>
+            <text class="value-unit">{{item.unit}}</text>
+            <text class="value-gender">女</text>
+          </view>
+        </view>
+        <text class="nutrient-note">{{item.note}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 人群原则 -->
+  <view wx:if="{{!searchKeyword && activeTab === 'groups'}}" class="tab-content">
+    <view class="section-header">
+      <text class="section-title">{{guideData.groups.title}}</text>
+    </view>
+
+    <view class="group-list">
+      <view 
+        wx:for="{{guideData.groups.categories}}" 
+        wx:key="id"
+        class="group-card card"
+        data-id="{{item.id}}"
+        bindtap="viewGroupDetail"
+      >
+        <view class="group-header">
+          <text class="group-icon">{{item.icon}}</text>
+          <text class="group-name">{{item.name}}</text>
+          <text class="group-arrow">›</text>
+        </view>
+        <view class="group-principles">
+          <text wx:for="{{item.principles.slice(0, 3)}}" wx:for-item="principle" wx:key="principle" class="principle-item">
+            {{principle}}
+          </text>
+        </view>
+        <view wx:if="{{item.warnings}}" class="group-warnings">
+          <text wx:for="{{item.warnings}}" wx:for-item="warning" wx:key="warning" class="warning-tag">⚠️ {{warning}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 饮食禁忌 -->
+  <view wx:if="{{!searchKeyword && activeTab === 'taboos'}}" class="tab-content">
+    <view class="section-header">
+      <text class="section-title">{{guideData.taboos.title}}</text>
+    </view>
+
+    <view class="taboo-list">
+      <view 
+        wx:for="{{guideData.taboos.items}}" 
+        wx:key="category"
+        class="taboo-card card"
+      >
+        <view class="taboo-header">
+          <text class="taboo-icon">{{item.icon}}</text>
+          <text class="taboo-category">{{item.category}}</text>
+        </view>
+        <view class="taboo-items">
+          <view wx:for="{{item.items}}" wx:for-item="subItem" wx:key="subItem" class="taboo-item">
+            <text class="taboo-dot">•</text>
+            <text class="taboo-text">{{subItem}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

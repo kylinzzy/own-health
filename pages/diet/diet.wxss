@@ -1,0 +1,268 @@
+/* 饮食记录页面样式 */
+
+/* 日期栏 */
+.date-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFFFFF;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 0 0 12px 12px;
+}
+
+.date-nav-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F5F5F5;
+  border-radius: 50%;
+}
+
+.nav-arrow {
+  font-size: 20px;
+  color: #2C3E50;
+  font-weight: 300;
+}
+
+.date-display {
+  flex: 1;
+  text-align: center;
+}
+
+.date-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.date-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.date-weekday {
+  font-size: 13px;
+  color: #7F8C8D;
+}
+
+.date-arrow {
+  font-size: 10px;
+  color: #BDC3C7;
+  margin-left: 4px;
+}
+
+/* 每日统计 */
+.daily-stats {
+  margin-bottom: 12px;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.stats-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.stats-calories {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2ECC71;
+}
+
+.nutrition-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nutrition-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #7F8C8D;
+}
+
+.bar-track {
+  width: 100%;
+  height: 6px;
+  background: #ECF0F1;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.bar-fill.protein {
+  background: #E74C3C;
+}
+
+.bar-fill.carbs {
+  background: #3498DB;
+}
+
+.bar-fill.fat {
+  background: #F39C12;
+}
+
+/* 餐次卡片 */
+.meals-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.meal-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.meal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.meal-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meal-icon {
+  font-size: 24px;
+}
+
+.meal-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.meal-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.meal-time {
+  font-size: 11px;
+  color: #7F8C8D;
+  margin-top: 2px;
+}
+
+.meal-calories {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.calories-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2ECC71;
+}
+
+.calories-unit {
+  font-size: 11px;
+  color: #7F8C8D;
+}
+
+/* 餐次记录 */
+.meal-records {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: #F8F9FA;
+  border-radius: 8px;
+}
+
+.record-info {
+  flex: 1;
+}
+
+.record-name {
+  display: block;
+  font-size: 14px;
+  color: #2C3E50;
+  margin-bottom: 4px;
+}
+
+.record-nutrition {
+  display: flex;
+  gap: 6px;
+}
+
+.nutrition-tag {
+  font-size: 10px;
+  color: #7F8C8D;
+  background: #FFFFFF;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.record-actions {
+  flex-shrink: 0;
+}
+
+.delete-btn {
+  font-size: 12px;
+  color: #E74C3C;
+  padding: 4px 8px;
+}
+
+/* 添加按钮 */
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px dashed #D5DBDB;
+  border-radius: 8px;
+  gap: 6px;
+}
+
+.add-icon {
+  font-size: 18px;
+  color: #2ECC71;
+  font-weight: 300;
+}
+
+.add-text {
+  font-size: 13px;
+  color: #7F8C8D;
+}
+
+.add-btn:active {
+  background: #F8F9FA;
+}

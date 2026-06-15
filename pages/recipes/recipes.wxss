@@ -1,0 +1,264 @@
+/* 减脂食谱页面样式 */
+
+/* 搜索栏 */
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: #FFFFFF;
+  gap: 10px;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #F5F5F5;
+  border-radius: 20px;
+  padding: 8px 12px;
+}
+
+.search-icon {
+  font-size: 16px;
+  margin-right: 8px;
+  color: #7F8C8D;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 14px;
+  color: #2C3E50;
+}
+
+.clear-icon {
+  font-size: 14px;
+  color: #BDC3C7;
+  padding: 4px;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #F5F5F5;
+  border-radius: 16px;
+  font-size: 13px;
+  color: #2C3E50;
+}
+
+.filter-arrow {
+  font-size: 10px;
+  margin-left: 4px;
+  transition: transform 0.2s;
+}
+
+.filter-arrow.up {
+  transform: rotate(180deg);
+}
+
+/* 筛选面板 */
+.filter-panel {
+  background: #FFFFFF;
+  padding: 16px;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.filter-section {
+  margin-bottom: 12px;
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+}
+
+.filter-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2C3E50;
+  margin-bottom: 8px;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-option {
+  padding: 6px 14px;
+  background: #F5F5F5;
+  border-radius: 16px;
+  font-size: 12px;
+  color: #7F8C8D;
+  transition: all 0.2s;
+}
+
+.filter-option.active {
+  background: #2ECC71;
+  color: #FFFFFF;
+}
+
+/* 食谱列表 */
+.recipe-list {
+  padding: 12px 16px;
+}
+
+.recipe-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* 收藏按钮 */
+.favorite-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.favorite-icon {
+  font-size: 22px;
+  color: #BDC3C7;
+}
+
+.favorite-icon.active {
+  color: #F39C12;
+}
+
+/* 食谱头部 */
+.recipe-header {
+  margin-bottom: 10px;
+  padding-right: 40px;
+}
+
+.recipe-name {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 6px;
+}
+
+.recipe-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meal-type {
+  font-size: 11px;
+  color: #2ECC71;
+  background: rgba(46, 204, 113, 0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.prep-time {
+  font-size: 11px;
+  color: #7F8C8D;
+}
+
+.difficulty {
+  font-size: 11px;
+  color: #7F8C8D;
+}
+
+/* 统计数据 */
+.recipe-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-top: 1px solid #F5F5F5;
+  border-bottom: 1px solid #F5F5F5;
+  margin-bottom: 10px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.stat-unit {
+  font-size: 10px;
+  color: #7F8C8D;
+  margin-top: 2px;
+}
+
+.stat-divider {
+  color: #ECF0F1;
+  font-size: 12px;
+}
+
+/* 标签 */
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* 食材 */
+.recipe-ingredients {
+  display: flex;
+  align-items: flex-start;
+}
+
+.ingredients-label {
+  font-size: 12px;
+  color: #7F8C8D;
+  flex-shrink: 0;
+}
+
+.ingredients-text {
+  font-size: 12px;
+  color: #2C3E50;
+  line-height: 1.4;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 16px;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.empty-text {
+  font-size: 15px;
+  color: #2C3E50;
+  margin-bottom: 6px;
+}
+
+.empty-subtext {
+  font-size: 13px;
+  color: #7F8C8D;
+}

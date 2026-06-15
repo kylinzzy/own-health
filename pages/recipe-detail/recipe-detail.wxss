@@ -1,0 +1,258 @@
+/* 食谱详情页面样式 */
+
+.container {
+  padding: 16px;
+  padding-bottom: 100px;
+}
+
+/* 头部信息 */
+.recipe-header {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.recipe-title-section {
+  flex: 1;
+}
+
+.recipe-name {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 8px;
+}
+
+.recipe-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meal-badge {
+  font-size: 12px;
+  color: #FFFFFF;
+  background: #2ECC71;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.meta-item {
+  font-size: 12px;
+  color: #7F8C8D;
+}
+
+.favorite-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F5F5F5;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+
+.favorite-icon {
+  font-size: 24px;
+  color: #BDC3C7;
+}
+
+.favorite-icon.active {
+  color: #F39C12;
+}
+
+/* 营养统计 */
+.nutrition-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 16px 0;
+  border-top: 1px solid #F5F5F5;
+  border-bottom: 1px solid #F5F5F5;
+  margin-bottom: 12px;
+}
+
+.nutrition-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nutrition-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2ECC71;
+}
+
+.nutrition-label {
+  font-size: 11px;
+  color: #7F8C8D;
+  margin-top: 2px;
+}
+
+.nutrition-divider {
+  width: 1px;
+  height: 30px;
+  background: #ECF0F1;
+}
+
+/* 标签 */
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* 区块 */
+.section {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 12px;
+}
+
+.title-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.ingredient-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: #7F8C8D;
+  font-weight: normal;
+}
+
+/* 食材列表 */
+.ingredients-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ingredient-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: #F8F9FA;
+  border-radius: 8px;
+}
+
+.ingredient-name {
+  font-size: 13px;
+  color: #2C3E50;
+}
+
+.ingredient-amount {
+  font-size: 12px;
+  color: #7F8C8D;
+}
+
+/* 步骤列表 */
+.steps-list {
+  counter-reset: step;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.step-item:last-child {
+  border-bottom: none;
+}
+
+.step-number {
+  width: 28px;
+  height: 28px;
+  background: #2ECC71;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 12px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-text {
+  flex: 1;
+  font-size: 14px;
+  color: #2C3E50;
+  line-height: 1.6;
+}
+
+/* 小贴士 */
+.tips-card {
+  background: #FFF9E6;
+  border-radius: 8px;
+  padding: 12px;
+  border-left: 3px solid #F39C12;
+}
+
+.tips-text {
+  font-size: 13px;
+  color: #2C3E50;
+  line-height: 1.6;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: #FFFFFF;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btn-icon {
+  font-size: 20px;
+  margin-right: 6px;
+  font-weight: 300;
+}

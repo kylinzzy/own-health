@@ -1,0 +1,110 @@
+<view class="container">
+  <!-- 日期选择器 -->
+  <view class="date-bar">
+    <view class="date-nav-btn" bindtap="prevDay">
+      <text class="nav-arrow">‹</text>
+    </view>
+    <view class="date-display">
+      <picker mode="date" value="{{currentDate}}" end="{{dateUtil.getToday()}}" bindchange="onDateChange">
+        <view class="date-picker">
+          <text class="date-text">{{currentDate}}</text>
+          <text class="date-weekday">{{dateUtil.getWeekDay(currentDate)}}</text>
+          <text class="date-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+    <view class="date-nav-btn" bindtap="nextDay">
+      <text class="nav-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 每日统计 -->
+  <view class="daily-stats card">
+    <view class="stats-header">
+      <text class="stats-title">今日摄入</text>
+      <text class="stats-calories">{{dailyStats.totalCalories}} 千卡</text>
+    </view>
+    <view class="nutrition-bars">
+      <view class="nutrition-bar-item">
+        <view class="bar-label">
+          <text>蛋白质</text>
+          <text>{{dailyStats.totalProtein}}g</text>
+        </view>
+        <view class="bar-track">
+          <view class="bar-fill protein" style="width: {{Math.min(100, (dailyStats.totalProtein / 60) * 100)}}%"></view>
+        </view>
+      </view>
+      <view class="nutrition-bar-item">
+        <view class="bar-label">
+          <text>碳水</text>
+          <text>{{dailyStats.totalCarbs}}g</text>
+        </view>
+        <view class="bar-track">
+          <view class="bar-fill carbs" style="width: {{Math.min(100, (dailyStats.totalCarbs / 250) * 100)}}%"></view>
+        </view>
+      </view>
+      <view class="nutrition-bar-item">
+        <view class="bar-label">
+          <text>脂肪</text>
+          <text>{{dailyStats.totalFat}}g</text>
+        </view>
+        <view class="bar-track">
+          <view class="bar-fill fat" style="width: {{Math.min(100, (dailyStats.totalFat / 60) * 100)}}%"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 餐次列表 -->
+  <view class="meals-section">
+    <view 
+      wx:for="{{mealOrder}}" 
+      wx:for-item="mealType"
+      wx:key="mealType"
+      class="meal-card"
+    >
+      <view class="meal-header">
+        <view class="meal-info">
+          <text class="meal-icon">{{mealTypes[mealType].icon}}</text>
+          <view class="meal-title-group">
+            <text class="meal-name">{{mealTypes[mealType].label}}</text>
+            <text class="meal-time">{{mealTypes[mealType].time}}</text>
+          </view>
+        </view>
+        <view class="meal-calories">
+          <text class="calories-value">{{getMealCalories(mealType)}}</text>
+          <text class="calories-unit">千卡</text>
+        </view>
+      </view>
+
+      <!-- 该餐次的记录 -->
+      <view class="meal-records">
+        <view 
+          wx:for="{{getMealRecords(mealType)}}" 
+          wx:for-item="record"
+          wx:key="id"
+          class="record-item"
+        >
+          <view class="record-info">
+            <text class="record-name">{{record.name}}</text>
+            <view class="record-nutrition">
+              <text class="nutrition-tag">{{record.calories}}千卡</text>
+              <text class="nutrition-tag" wx:if="{{record.protein}}">蛋{{record.protein}}g</text>
+              <text class="nutrition-tag" wx:if="{{record.carbs}}">碳{{record.carbs}}g</text>
+              <text class="nutrition-tag" wx:if="{{record.fat}}">脂{{record.fat}}g</text>
+            </view>
+          </view>
+          <view class="record-actions">
+            <text class="delete-btn" data-id="{{record.id}}" bindtap="deleteRecord">删除</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 添加按钮 -->
+      <view class="add-btn" data-meal-type="{{mealType}}" bindtap="addDietRecord">
+        <text class="add-icon">+</text>
+        <text class="add-text">添加{{mealTypes[mealType].label}}</text>
+      </view>
+    </view>
+  </view>
+</view>

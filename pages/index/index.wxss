@@ -1,0 +1,288 @@
+/* 首页样式 */
+
+/* 欢迎区域 */
+.welcome-section {
+  margin-bottom: 16px;
+}
+
+.welcome-date {
+  display: block;
+  font-size: 13px;
+  color: #7F8C8D;
+  margin-bottom: 4px;
+}
+
+.welcome-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+/* 今日概览卡片 */
+.overview-card {
+  background: linear-gradient(135deg, #2ECC71 0%, #27AE60 100%);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  color: #FFFFFF;
+}
+
+.overview-header {
+  margin-bottom: 16px;
+}
+
+.overview-title {
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.overview-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.overview-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.overview-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.overview-value {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.overview-value.negative {
+  color: #A8E6CF;
+}
+
+.overview-label {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.overview-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 体重卡片 */
+.weight-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.weight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.weight-title {
+  font-size: 14px;
+  color: #7F8C8D;
+}
+
+.weight-date {
+  font-size: 12px;
+  color: #BDC3C7;
+}
+
+.weight-display {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.weight-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2C3E50;
+}
+
+.weight-unit {
+  font-size: 14px;
+  color: #7F8C8D;
+}
+
+.weight-bodyfat {
+  margin-left: auto;
+  font-size: 13px;
+  color: #2ECC71;
+  background: rgba(46, 204, 113, 0.1);
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+/* 快捷操作 */
+.quick-actions {
+  display: flex;
+  justify-content: space-around;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-icon {
+  font-size: 28px;
+}
+
+.action-label {
+  font-size: 12px;
+  color: #2C3E50;
+}
+
+/* 功能专区 */
+.feature-section {
+  margin-bottom: 16px;
+}
+
+.section-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 10px;
+}
+
+.feature-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feature-card {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  border-left: 4px solid;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.feature-icon {
+  font-size: 28px;
+  margin-right: 12px;
+}
+
+.feature-info {
+  flex: 1;
+}
+
+.feature-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 2px;
+}
+
+.feature-desc {
+  font-size: 12px;
+  color: #7F8C8D;
+}
+
+.feature-arrow {
+  font-size: 20px;
+  color: #BDC3C7;
+}
+
+/* 预览区域 */
+.preview-section {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.preview-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.preview-count {
+  font-size: 12px;
+  color: #7F8C8D;
+}
+
+.preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preview-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: #F8F9FA;
+  border-radius: 8px;
+}
+
+.preview-name {
+  font-size: 14px;
+  color: #2C3E50;
+}
+
+.preview-calories {
+  font-size: 13px;
+  color: #2ECC71;
+  font-weight: 500;
+}
+
+/* 健康提示 */
+.health-tip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFF9E6;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.tip-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.tip-text {
+  flex: 1;
+  font-size: 13px;
+  color: #2C3E50;
+  line-height: 1.5;
+}

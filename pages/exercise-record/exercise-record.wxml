@@ -1,0 +1,110 @@
+<view class="container">
+  <view class="form-card">
+    <!-- 日期 -->
+    <view class="form-group">
+      <text class="form-label">日期</text>
+      <view class="date-display">{{date}}</view>
+    </view>
+
+    <!-- 运动类型选择 -->
+    <view class="form-group">
+      <text class="form-label">运动类型</text>
+      <view class="type-grid">
+        <view 
+          wx:for="{{typeKeys}}" 
+          wx:for-item="typeKey"
+          wx:key="typeKey"
+          class="type-item {{selectedType === typeKey ? 'active' : ''}}"
+          data-type="{{typeKey}}"
+          bindtap="selectType"
+        >
+          <text class="type-icon">{{exerciseTypes[typeKey].icon}}</text>
+          <text class="type-name">{{exerciseTypes[typeKey].label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 自定义名称 -->
+    <view class="form-group">
+      <text class="form-label">运动名称</text>
+      <input 
+        class="form-input" 
+        type="text" 
+        placeholder="例如：晨跑、瑜伽..."
+        value="{{customName}}"
+        bindinput="onNameInput"
+      />
+    </view>
+
+    <!-- 运动时长 -->
+    <view class="form-group">
+      <text class="form-label">运动时长 (分钟) *</text>
+      <view class="input-with-unit">
+        <input 
+          class="form-input" 
+          type="digit" 
+          placeholder="请输入时长"
+          value="{{duration}}"
+          bindinput="onDurationInput"
+        />
+        <text class="input-unit">分钟</text>
+      </view>
+    </view>
+
+    <!-- 运动强度 -->
+    <view class="form-group">
+      <text class="form-label">运动强度</text>
+      <view class="intensity-options">
+        <view 
+          class="intensity-item {{intensity === 'low' ? 'active' : ''}}"
+          data-intensity="low"
+          bindtap="selectIntensity"
+        >
+          <text class="intensity-dot low"></text>
+          <text class="intensity-name">低强度</text>
+          <text class="intensity-desc">散步、瑜伽</text>
+        </view>
+        <view 
+          class="intensity-item {{intensity === 'medium' ? 'active' : ''}}"
+          data-intensity="medium"
+          bindtap="selectIntensity"
+        >
+          <text class="intensity-dot medium"></text>
+          <text class="intensity-name">中强度</text>
+          <text class="intensity-desc">快走、骑行</text>
+        </view>
+        <view 
+          class="intensity-item {{intensity === 'high' ? 'active' : ''}}"
+          data-intensity="high"
+          bindtap="selectIntensity"
+        >
+          <text class="intensity-dot high"></text>
+          <text class="intensity-name">高强度</text>
+          <text class="intensity-desc">跑步、游泳</text>
+        </view>
+        <view 
+          class="intensity-item {{intensity === 'veryHigh' ? 'active' : ''}}"
+          data-intensity="veryHigh"
+          bindtap="selectIntensity"
+        >
+          <text class="intensity-dot veryHigh"></text>
+          <text class="intensity-name">极高强度</text>
+          <text class="intensity-desc">HIIT、球类</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 预估消耗 -->
+    <view class="calories-preview" wx:if="{{calculatedCalories > 0}}">
+      <text class="preview-label">预估消耗</text>
+      <text class="preview-value">{{calculatedCalories}}</text>
+      <text class="preview-unit">千卡</text>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-bar">
+    <view class="btn btn-ghost" bindtap="cancel">取消</view>
+    <view class="btn btn-primary" bindtap="saveRecord">保存</view>
+  </view>
+</view>

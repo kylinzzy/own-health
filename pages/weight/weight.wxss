@@ -1,0 +1,414 @@
+/* 体重管理页面样式 */
+
+/* 当前体重卡片 */
+.current-weight-card {
+  background: linear-gradient(135deg, #2ECC71 0%, #27AE60 100%);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 12px;
+  color: #FFFFFF;
+}
+
+.weight-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.weight-value {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.weight-unit {
+  font-size: 18px;
+  margin-left: 4px;
+  opacity: 0.8;
+}
+
+.weight-change {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.change-icon {
+  font-size: 14px;
+}
+
+.change-icon.down {
+  color: #A8E6CF;
+}
+
+.change-icon.up {
+  color: #FFE5E5;
+}
+
+.change-value {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.change-value.down {
+  color: #A8E6CF;
+}
+
+.change-value.up {
+  color: #FFE5E5;
+}
+
+.change-label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.weight-target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.target-label {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.target-value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.target-diff {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* 统计行 */
+.stats-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.stat-card {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card .stat-label {
+  display: block;
+  font-size: 11px;
+  color: #7F8C8D;
+  margin-bottom: 4px;
+}
+
+.stat-card .stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2C3E50;
+}
+
+.stat-card .stat-unit {
+  font-size: 11px;
+  color: #7F8C8D;
+  margin-left: 2px;
+}
+
+/* 图表卡片 */
+.chart-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.time-range-switch {
+  display: flex;
+  background: #F5F5F5;
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.range-btn {
+  padding: 6px 16px;
+  font-size: 13px;
+  color: #7F8C8D;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.range-btn.active {
+  background: #FFFFFF;
+  color: #2ECC71;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+  position: relative;
+}
+
+.weight-chart {
+  width: 100%;
+  height: 220px;
+}
+
+.chart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.empty-icon {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.empty-text {
+  font-size: 14px;
+  color: #7F8C8D;
+}
+
+/* 周总结 */
+.weekly-report {
+  margin-bottom: 12px;
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.report-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.report-date {
+  font-size: 12px;
+  color: #7F8C8D;
+}
+
+.report-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.report-row {
+  display: flex;
+  gap: 16px;
+}
+
+.report-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.report-label {
+  font-size: 12px;
+  color: #7F8C8D;
+  margin-bottom: 2px;
+}
+
+.report-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.report-value.down {
+  color: #2ECC71;
+}
+
+.report-value.up {
+  color: #E74C3C;
+}
+
+.report-progress {
+  margin-top: 4px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #7F8C8D;
+  margin-bottom: 6px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #ECF0F1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2ECC71, #27AE60);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.report-assessment {
+  background: #F0F9FF;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #2C3E50;
+  line-height: 1.5;
+}
+
+/* 记录列表 */
+.records-section {
+  margin-bottom: 80px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 4px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.record-count {
+  font-size: 12px;
+  color: #7F8C8D;
+}
+
+.records-list {
+  background: #FFFFFF;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-left {
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.record-date {
+  display: block;
+  font-size: 14px;
+  color: #2C3E50;
+  font-weight: 500;
+}
+
+.record-weekday {
+  font-size: 11px;
+  color: #7F8C8D;
+  margin-top: 2px;
+}
+
+.record-center {
+  flex: 1;
+  text-align: center;
+}
+
+.record-weight {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.record-bodyfat {
+  font-size: 11px;
+  color: #7F8C8D;
+  margin-top: 2px;
+}
+
+.record-right {
+  width: 80px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.record-note {
+  display: block;
+  font-size: 11px;
+  color: #7F8C8D;
+  margin-bottom: 4px;
+}
+
+.delete-btn {
+  font-size: 12px;
+  color: #E74C3C;
+  padding: 2px 8px;
+}
+
+/* 浮动按钮 */
+.fab {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom) + 60px);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #2ECC71;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 300;
+  box-shadow: 0 4px 16px rgba(46, 204, 113, 0.4);
+  z-index: 100;
+}
+
+.fab:active {
+  transform: scale(0.95);
+}

@@ -1,0 +1,157 @@
+<view class="container">
+  <!-- 当前体重卡片 -->
+  <view class="current-weight-card">
+    <view class="weight-main">
+      <text class="weight-value">{{stats.current || '--'}}</text>
+      <text class="weight-unit">kg</text>
+    </view>
+    <view class="weight-change" wx:if="{{stats.change !== null}}">
+      <text class="change-icon {{stats.change < 0 ? 'down' : stats.change > 0 ? 'up' : ''}}">
+        {{stats.change < 0 ? '↓' : stats.change > 0 ? '↑' : '-'}}
+      </text>
+      <text class="change-value {{stats.change < 0 ? 'down' : stats.change > 0 ? 'up' : ''}}">
+        {{stats.change > 0 ? '+' : ''}}{{stats.change}}kg
+      </text>
+      <text class="change-label">较首次记录</text>
+    </view>
+    <view class="weight-target" wx:if="{{settings.targetWeight}}">
+      <text class="target-label">目标体重</text>
+      <text class="target-value">{{settings.targetWeight}}kg</text>
+      <text class="target-diff" wx:if="{{stats.current}}">
+        还差{{(stats.current - settings.targetWeight).toFixed(1)}}kg
+      </text>
+    </view>
+  </view>
+
+  <!-- 统计卡片 -->
+  <view class="stats-row">
+    <view class="stat-card">
+      <text class="stat-label">最高</text>
+      <text class="stat-value">{{stats.highest || '--'}}</text>
+      <text class="stat-unit">kg</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-label">最低</text>
+      <text class="stat-value">{{stats.lowest || '--'}}</text>
+      <text class="stat-unit">kg</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-label">记录天数</text>
+      <text class="stat-value">{{weightRecords.length}}</text>
+      <text class="stat-unit">天</text>
+    </view>
+  </view>
+
+  <!-- 图表区域 -->
+  <view class="chart-card">
+    <view class="chart-header">
+      <text class="chart-title">体重趋势</text>
+      <view class="time-range-switch">
+        <view 
+          class="range-btn {{timeRange === 'week' ? 'active' : ''}}"
+          data-range="week"
+          bindtap="switchTimeRange"
+        >
+          周
+        </view>
+        <view 
+          class="range-btn {{timeRange === 'month' ? 'active' : ''}}"
+          data-range="month"
+          bindtap="switchTimeRange"
+        >
+          月
+        </view>
+      </view>
+    </view>
+    <view class="chart-container">
+      <canvas 
+        wx:if="{{chartData.length > 0}}"
+        canvas-id="weightChart"
+        class="weight-chart"
+        style="width: 100%; height: 220px;"
+      ></canvas>
+      <view wx:else class="chart-empty">
+        <text class="empty-icon">📊</text>
+        <text class="empty-text">暂无数据，开始记录体重吧</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 周总结 -->
+  <view class="weekly-report card" wx:if="{{weeklyReport && weeklyReport.hasData}}">
+    <view class="report-header">
+      <text class="report-title">📋 本周总结</text>
+      <text class="report-date">{{weeklyReport.date}}</text>
+    </view>
+    <view class="report-content">
+      <view class="report-row">
+        <view class="report-item">
+          <text class="report-label">平均体重</text>
+          <text class="report-value">{{weeklyReport.avgWeight}}kg</text>
+        </view>
+        <view class="report-item">
+          <text class="report-label">体重变化</text>
+          <text class="report-value {{weeklyReport.changeDirection === 'down' ? 'down' : weeklyReport.changeDirection === 'up' ? 'up' : ''}}">
+            {{weeklyReport.change > 0 ? '+' : ''}}{{weeklyReport.change}}kg
+          </text>
+        </view>
+      </view>
+      <view class="report-row">
+        <view class="report-item">
+          <text class="report-label">日均摄入</text>
+          <text class="report-value">{{weeklyReport.avgDailyIntake}}千卡</text>
+        </view>
+        <view class="report-item">
+          <text class="report-label">运动消耗</text>
+          <text class="report-value">{{weeklyReport.totalBurn}}千卡</text>
+        </view>
+      </view>
+      <view class="report-progress" wx:if="{{settings.targetWeight}}">
+        <view class="progress-label">
+          <text>目标进度</text>
+          <text>{{weeklyReport.progressPercent}}%</text>
+        </view>
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{weeklyReport.progressPercent}}%"></view>
+        </view>
+      </view>
+      <view class="report-assessment">
+        <text>{{weeklyReport.assessment}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 记录列表 -->
+  <view class="records-section">
+    <view class="section-header">
+      <text class="section-title">历史记录</text>
+      <text class="record-count">共 {{weightRecords.length}} 条</text>
+    </view>
+    
+    <view class="records-list">
+      <view 
+        wx:for="{{weightRecords}}" 
+        wx:key="id"
+        class="record-item"
+      >
+        <view class="record-left">
+          <text class="record-date">{{item.date}}</text>
+          <text class="record-weekday">{{item.weekday}}</text>
+        </view>
+        <view class="record-center">
+          <text class="record-weight">{{item.weight}}kg</text>
+          <text class="record-bodyfat" wx:if="{{item.bodyFat}}">体脂 {{item.bodyFat}}%</text>
+        </view>
+        <view class="record-right">
+          <text class="record-note" wx:if="{{item.note}}">{{item.note}}</text>
+          <text class="delete-btn" data-id="{{item.id}}" bindtap="deleteRecord">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 浮动按钮 -->
+  <view class="fab" bindtap="goToRecord">
+    <text>+</text>
+  </view>
+</view>

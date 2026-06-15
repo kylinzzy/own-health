@@ -1,0 +1,103 @@
+<view class="container">
+  <!-- 日期选择器 -->
+  <view class="date-bar">
+    <view class="date-nav-btn" bindtap="prevDay">
+      <text class="nav-arrow">‹</text>
+    </view>
+    <view class="date-display">
+      <picker mode="date" value="{{currentDate}}" end="{{dateUtil.getToday()}}" bindchange="onDateChange">
+        <view class="date-picker">
+          <text class="date-text">{{currentDate}}</text>
+          <text class="date-weekday">{{dateUtil.getWeekDay(currentDate)}}</text>
+          <text class="date-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+    <view class="date-nav-btn" bindtap="nextDay">
+      <text class="nav-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 今日热量缺口 -->
+  <view class="deficit-card">
+    <view class="deficit-header">
+      <text class="deficit-title">今日热量缺口</text>
+      <text class="deficit-value {{calorieDeficit < 0 ? 'negative' : 'positive'}}">
+        {{calorieDeficit > 0 ? '+' : ''}}{{calorieDeficit}}
+      </text>
+      <text class="deficit-unit">千卡</text>
+    </view>
+    <view class="deficit-hint">
+      <text wx:if="{{calorieDeficit < 0}}">🔥 正在燃脂，继续保持！</text>
+      <text wx:elif="{{calorieDeficit === 0}}">⚖️ 热量平衡</text>
+      <text wx:else">📈 热量盈余，建议增加运动</text>
+    </view>
+  </view>
+
+  <!-- 周统计 -->
+  <view class="weekly-stats card">
+    <view class="stats-header">
+      <text class="stats-title">本周运动统计</text>
+    </view>
+    <view class="stats-grid">
+      <view class="stats-item">
+        <text class="stats-number">{{weeklyStats.totalDuration}}</text>
+        <text class="stats-label">分钟</text>
+      </view>
+      <view class="stats-item">
+        <text class="stats-number">{{weeklyStats.totalBurn}}</text>
+        <text class="stats-label">千卡</text>
+      </view>
+      <view class="stats-item">
+        <text class="stats-number">{{weeklyStats.totalCount}}</text>
+        <text class="stats-label">次</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日运动记录 -->
+  <view class="exercise-section">
+    <view class="section-header">
+      <text class="section-title">今日运动</text>
+      <text class="record-count">{{exerciseRecords.length}} 项</text>
+    </view>
+
+    <view class="exercise-list">
+      <view 
+        wx:for="{{exerciseRecords}}" 
+        wx:key="id"
+        class="exercise-item"
+      >
+        <view class="exercise-icon">{{exerciseTypes[item.type]?.icon || '⭐'}}</view>
+        <view class="exercise-info">
+          <text class="exercise-name">{{item.name}}</text>
+          <view class="exercise-meta">
+            <text class="meta-tag">{{item.duration}}分钟</text>
+            <text class="meta-tag intensity-{{item.intensity}}">
+              {{item.intensity === 'low' ? '低强度' : item.intensity === 'medium' ? '中强度' : item.intensity === 'high' ? '高强度' : '极高强度'}}
+            </text>
+          </view>
+        </view>
+        <view class="exercise-burn">
+          <text class="burn-value">{{item.calories}}</text>
+          <text class="burn-unit">千卡</text>
+        </view>
+        <view class="exercise-actions">
+          <text class="delete-btn" data-id="{{item.id}}" bindtap="deleteRecord">删除</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{exerciseRecords.length === 0}}" class="empty-state">
+      <text class="empty-icon">🏃</text>
+      <text class="empty-text">今天还没有运动记录</text>
+      <text class="empty-subtext">点击右下角添加运动</text>
+    </view>
+  </view>
+
+  <!-- 浮动按钮 -->
+  <view class="fab" bindtap="goToRecord">
+    <text>+</text>
+  </view>
+</view>

@@ -1,0 +1,128 @@
+<view class="container">
+  <!-- 欢迎区域 -->
+  <view class="welcome-section">
+    <text class="welcome-date">{{today}}</text>
+    <text class="welcome-text">{{dateUtil.getWeekDay(today)}}，保持健康节奏 💪</text>
+  </view>
+
+  <!-- 今日数据概览 -->
+  <view class="overview-card">
+    <view class="overview-header">
+      <text class="overview-title">今日概览</text>
+    </view>
+    <view class="overview-stats">
+      <view class="overview-item">
+        <text class="overview-icon">🍽️</text>
+        <text class="overview-value">{{dailyStats.intake}}</text>
+        <text class="overview-label">摄入千卡</text>
+      </view>
+      <view class="overview-divider"></view>
+      <view class="overview-item">
+        <text class="overview-icon">🔥</text>
+        <text class="overview-value">{{dailyStats.burn}}</text>
+        <text class="overview-label">运动消耗</text>
+      </view>
+      <view class="overview-divider"></view>
+      <view class="overview-item">
+        <text class="overview-icon">⚖️</text>
+        <text class="overview-value {{dailyStats.deficit < 0 ? 'negative' : ''}}">
+          {{dailyStats.deficit > 0 ? '+' : ''}}{{dailyStats.deficit}}
+        </text>
+        <text class="overview-label">热量缺口</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最新体重 -->
+  <view class="weight-card" wx:if="{{latestWeight}}">
+    <view class="weight-header">
+      <text class="weight-title">最新体重</text>
+      <text class="weight-date">{{latestWeight.date}}</text>
+    </view>
+    <view class="weight-display">
+      <text class="weight-number">{{latestWeight.weight}}</text>
+      <text class="weight-unit">kg</text>
+      <text class="weight-bodyfat" wx:if="{{latestWeight.bodyFat}}">
+        体脂 {{latestWeight.bodyFat}}%
+      </text>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="quick-actions">
+    <view 
+      wx:for="{{quickActions}}" 
+      wx:key="label"
+      class="action-item"
+      data-path="{{item.path}}"
+      bindtap="onQuickAction"
+    >
+      <text class="action-icon">{{item.icon}}</text>
+      <text class="action-label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <!-- 功能卡片 -->
+  <view class="feature-section">
+    <text class="section-title">功能专区</text>
+    <view class="feature-grid">
+      <view 
+        wx:for="{{featureCards}}" 
+        wx:key="title"
+        class="feature-card"
+        style="border-left-color: {{item.color}}"
+        data-path="{{item.path}}"
+        bindtap="onFeatureCard"
+      >
+        <text class="feature-icon">{{item.icon}}</text>
+        <view class="feature-info">
+          <text class="feature-title">{{item.title}}</text>
+          <text class="feature-desc">{{item.desc}}</text>
+        </view>
+        <text class="feature-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日饮食预览 -->
+  <view class="preview-section" wx:if="{{todayDiet.length > 0}}">
+    <view class="preview-header">
+      <text class="preview-title">今日饮食</text>
+      <text class="preview-count">{{todayDiet.length}} 项</text>
+    </view>
+    <view class="preview-list">
+      <view 
+        wx:for="{{todayDiet}}" 
+        wx:key="id"
+        class="preview-item"
+      >
+        <text class="preview-name">{{item.name}}</text>
+        <text class="preview-calories">{{item.calories}}千卡</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日运动预览 -->
+  <view class="preview-section" wx:if="{{todayExercise.length > 0}}">
+    <view class="preview-header">
+      <text class="preview-title">今日运动</text>
+      <text class="preview-count">{{todayExercise.length}} 项</text>
+    </view>
+    <view class="preview-list">
+      <view 
+        wx:for="{{todayExercise}}" 
+        wx:key="id"
+        class="preview-item"
+      >
+        <text class="preview-name">{{item.name}}</text>
+        <text class="preview-calories">{{item.calories}}千卡</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 健康提示 -->
+  <view class="health-tip">
+    <text class="tip-icon">💡</text>
+    <text class="tip-text">保持规律作息，每天饮水2000ml以上，坚持就是胜利！</text>
+  </view>
+</view>

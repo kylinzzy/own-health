@@ -1,0 +1,223 @@
+<view class="container">
+  <!-- 报告类型切换 -->
+  <view class="report-tabs">
+    <view 
+      class="tab-item {{reportType === 'daily' ? 'active' : ''}}"
+      data-type="daily"
+      bindtap="switchReportType"
+    >
+      <text class="tab-icon">📅</text>
+      <text class="tab-label">今日分析</text>
+    </view>
+    <view 
+      class="tab-item {{reportType === 'weekly' ? 'active' : ''}}"
+      data-type="weekly"
+      bindtap="switchReportType"
+    >
+      <text class="tab-icon">📊</text>
+      <text class="tab-label">本周总结</text>
+    </view>
+  </view>
+
+  <!-- BMI卡片 -->
+  <view class="bmi-card" wx:if="{{bmi}}">
+    <view class="bmi-header">
+      <text class="bmi-title">BMI指数</text>
+      <text class="bmi-value" style="color: {{bmiCategory.color}}">{{bmi}}</text>
+    </view>
+    <view class="bmi-category" style="color: {{bmiCategory.color}}">
+      {{bmiCategory.category}}
+    </view>
+    <text class="bmi-advice">{{bmiCategory.advice}}</text>
+  </view>
+
+  <!-- 今日分析 -->
+  <view wx:if="{{reportType === 'daily' && healthReport}}">
+    <!-- 综合评分 -->
+    <view class="score-card">
+      <view class="score-circle">
+        <text class="score-value">{{healthReport.overallScore}}</text>
+        <text class="score-label">健康评分</text>
+      </view>
+      <view class="score-level" style="color: {{getScoreColor(healthReport.overallScore)}}">
+        {{getScoreLevel(healthReport.overallScore)}}
+      </view>
+    </view>
+
+    <!-- 维度评分 -->
+    <view class="dimensions-card card">
+      <view class="card-title">各项评分</view>
+      <view class="dimension-list">
+        <view class="dimension-item">
+          <view class="dimension-info">
+            <text class="dimension-name">体重管理</text>
+            <text class="dimension-score" style="color: {{getScoreColor(healthReport.dimensions.weight.score)}}">
+              {{healthReport.dimensions.weight.score}}分
+            </text>
+          </view>
+          <view class="dimension-bar">
+            <view class="dimension-fill" style="width: {{healthReport.dimensions.weight.score}}%; background: {{getScoreColor(healthReport.dimensions.weight.score)}}"></view>
+          </view>
+          <text class="dimension-assessment">{{healthReport.dimensions.weight.assessment}}</text>
+        </view>
+
+        <view class="dimension-item">
+          <view class="dimension-info">
+            <text class="dimension-name">热量控制</text>
+            <text class="dimension-score" style="color: {{getScoreColor(healthReport.dimensions.calorie.score)}}">
+              {{healthReport.dimensions.calorie.score}}分
+            </text>
+          </view>
+          <view class="dimension-bar">
+            <view class="dimension-fill" style="width: {{healthReport.dimensions.calorie.score}}%; background: {{getScoreColor(healthReport.dimensions.calorie.score)}}"></view>
+          </view>
+          <text class="dimension-assessment">{{healthReport.dimensions.calorie.assessment}}</text>
+        </view>
+
+        <view class="dimension-item">
+          <view class="dimension-info">
+            <text class="dimension-name">营养均衡</text>
+            <text class="dimension-score" style="color: {{getScoreColor(healthReport.dimensions.nutrition.score)}}">
+              {{healthReport.dimensions.nutrition.score}}分
+            </text>
+          </view>
+          <view class="dimension-bar">
+            <view class="dimension-fill" style="width: {{healthReport.dimensions.nutrition.score}}%; background: {{getScoreColor(healthReport.dimensions.nutrition.score)}}"></view>
+          </view>
+          <text class="dimension-assessment">{{healthReport.dimensions.nutrition.assessment}}</text>
+        </view>
+
+        <view class="dimension-item">
+          <view class="dimension-info">
+            <text class="dimension-name">运动达标</text>
+            <text class="dimension-score" style="color: {{getScoreColor(healthReport.dimensions.exercise.score)}}">
+              {{healthReport.dimensions.exercise.score}}分
+            </text>
+          </view>
+          <view class="dimension-bar">
+            <view class="dimension-fill" style="width: {{healthReport.dimensions.exercise.score}}%; background: {{getScoreColor(healthReport.dimensions.exercise.score)}}"></view>
+          </view>
+          <text class="dimension-assessment">{{healthReport.dimensions.exercise.assessment}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 今日数据摘要 -->
+    <view class="summary-card card">
+      <view class="card-title">今日数据</view>
+      <view class="summary-grid">
+        <view class="summary-item">
+          <text class="summary-value">{{healthReport.summary.todayIntake}}</text>
+          <text class="summary-label">摄入千卡</text>
+        </view>
+        <view class="summary-item">
+          <text class="summary-value">{{healthReport.summary.todayBurn}}</text>
+          <text class="summary-label">运动消耗</text>
+        </view>
+        <view class="summary-item">
+          <text class="summary-value">{{healthReport.summary.todayExercise}}</text>
+          <text class="summary-label">运动分钟</text>
+        </view>
+        <view class="summary-item" wx:if="{{healthReport.summary.currentWeight}}">
+          <text class="summary-value">{{healthReport.summary.currentWeight}}</text>
+          <text class="summary-label">当前体重</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 建议 -->
+    <view class="suggestions-card card">
+      <view class="card-title">💡 健康建议</view>
+      <view class="suggestion-list">
+        <view 
+          wx:for="{{healthReport.suggestions}}" 
+          wx:key="index"
+          class="suggestion-item"
+        >
+          <text class="suggestion-bullet">•</text>
+          <text class="suggestion-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 本周总结 -->
+  <view wx:if="{{reportType === 'weekly' && weeklyReport}}">
+    <view wx:if="{{!weeklyReport.hasData}}" class="empty-state">
+      <text class="empty-icon">📊</text>
+      <text class="empty-text">本周暂无数据</text>
+      <text class="empty-subtext">开始记录体重、饮食和运动，生成周总结</text>
+    </view>
+
+    <view wx:if="{{weeklyReport.hasData}}">
+      <!-- 体重变化 -->
+      <view class="weekly-weight-card card">
+        <view class="card-title">体重变化</view>
+        <view class="weight-change-display">
+          <view class="weight-stat">
+            <text class="stat-label">平均体重</text>
+            <text class="stat-value">{{weeklyReport.avgWeight}}kg</text>
+          </view>
+          <view class="weight-change-arrow">
+            <text class="change-icon {{weeklyReport.changeDirection === 'down' ? 'down' : weeklyReport.changeDirection === 'up' ? 'up' : ''}}">
+              {{weeklyReport.changeDirection === 'down' ? '↓' : weeklyReport.changeDirection === 'up' ? '↑' : '-'}}
+            </text>
+          </view>
+          <view class="weight-stat">
+            <text class="stat-label">变化</text>
+            <text class="stat-value {{weeklyReport.changeDirection === 'down' ? 'down' : weeklyReport.changeDirection === 'up' ? 'up' : ''}}">
+              {{weeklyReport.change > 0 ? '+' : ''}}{{weeklyReport.change}}kg
+            </text>
+          </view>
+        </view>
+        <view class="weight-range">
+          <text>最高 {{weeklyReport.maxWeight}}kg / 最低 {{weeklyReport.minWeight}}kg</text>
+        </view>
+      </view>
+
+      <!-- 周统计 -->
+      <view class="weekly-stats-card card">
+        <view class="card-title">本周统计</view>
+        <view class="weekly-stats-grid">
+          <view class="weekly-stat-item">
+            <text class="weekly-stat-value">{{weeklyReport.avgDailyIntake}}</text>
+            <text class="weekly-stat-label">日均摄入(千卡)</text>
+          </view>
+          <view class="weekly-stat-item">
+            <text class="weekly-stat-value">{{weeklyReport.totalExerciseTime}}</text>
+            <text class="weekly-stat-label">运动总时长(分钟)</text>
+          </view>
+          <view class="weekly-stat-item">
+            <text class="weekly-stat-value">{{weeklyReport.totalBurn}}</text>
+            <text class="weekly-stat-label">运动总消耗(千卡)</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 目标进度 -->
+      <view class="progress-card card" wx:if="{{settings.targetWeight}}">
+        <view class="card-title">目标进度</view>
+        <view class="progress-display">
+          <view class="progress-circle">
+            <text class="progress-percent">{{weeklyReport.progressPercent}}%</text>
+          </view>
+          <view class="progress-info">
+            <text class="progress-target">目标体重 {{settings.targetWeight}}kg</text>
+            <text class="progress-diff" wx:if="{{weeklyReport.targetDiff}}">
+              还需减重 {{weeklyReport.targetDiff}}kg
+            </text>
+          </view>
+        </view>
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{weeklyReport.progressPercent}}%"></view>
+        </view>
+      </view>
+
+      <!-- 评估 -->
+      <view class="assessment-card card">
+        <view class="card-title">综合评估</view>
+        <text class="assessment-text">{{weeklyReport.assessment}}</text>
+      </view>
+    </view>
+  </view>
+</view>
