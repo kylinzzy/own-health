@@ -87,8 +87,12 @@ Page({
       success: (res) => {
         const mealTypes = ['breakfast', 'lunch', 'dinner', 'snack'];
         const selectedMeal = mealTypes[res.tapIndex];
-        
+
         this.saveDietRecord(recipe, selectedMeal);
+      },
+      fail: () => {
+        // 用户取消，默认添加到当前餐次
+        this.saveDietRecord(recipe, recipe.mealType || 'lunch');
       }
     });
   },
@@ -99,28 +103,44 @@ Page({
   saveDietRecord(recipe, mealType) {
     const today = dateUtil.getToday();
     const records = storage.get('diet_records', []);
-    
+
     const newRecord = {
       id: `${today}-${mealType}-${Date.now()}`,
       date: today,
       mealType: mealType,
       name: recipe.name,
-      calories: recipe.calories,
-      protein: recipe.protein,
-      carbs: recipe.carbs,
-      fat: recipe.fat,
+      calories: recipe.calories || 0,
+      protein: recipe.protein || 0,
+      carbs: recipe.carbs || 0,
+      fat: recipe.fat || 0,
       source: 'recipe',
       recipeId: recipe.id,
       timestamp: Date.now()
     };
-    
+
     records.push(newRecord);
     storage.set('diet_records', records);
-    
+
     wx.showToast({
       title: '添加成功',
       icon: 'success'
     });
+
+    // 添加成功后返回饮食记录页面
+    setTimeout(() => {
+      wx.navigateBack({
+        success: () => {
+          // 尝试刷新上一页数据
+          const pages = getCurrentPages();
+          if (pages.length >= 2) {
+            const prevPage = pages[pages.length - 2];
+            if (prevPage && prevPage.loadData) {
+              prevPage.loadData();
+            }
+          }
+        }
+      });
+    }, 1000);
   },
 
   /**

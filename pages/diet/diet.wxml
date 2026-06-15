@@ -57,45 +57,52 @@
 
   <!-- 餐次列表 -->
   <view class="meals-section">
-    <view 
-      wx:for="{{mealOrder}}" 
+    <view
+      wx:for="{{mealOrder}}"
       wx:for-item="mealType"
       wx:key="mealType"
       class="meal-card"
     >
       <view class="meal-header">
         <view class="meal-info">
-          <text class="meal-icon">{{mealTypes[mealType].icon}}</text>
+          <text class="meal-icon">{{mealData[mealType].icon}}</text>
           <view class="meal-title-group">
-            <text class="meal-name">{{mealTypes[mealType].label}}</text>
-            <text class="meal-time">{{mealTypes[mealType].time}}</text>
+            <text class="meal-name">{{mealData[mealType].label}}</text>
+            <text class="meal-time">{{mealData[mealType].time}}</text>
           </view>
         </view>
         <view class="meal-calories">
-          <text class="calories-value">{{getMealCalories(mealType)}}</text>
+          <text class="calories-value">{{mealData[mealType].calories}}</text>
           <text class="calories-unit">千卡</text>
         </view>
       </view>
 
       <!-- 该餐次的记录 -->
       <view class="meal-records">
-        <view 
-          wx:for="{{getMealRecords(mealType)}}" 
+        <view
+          wx:for="{{mealData[mealType].records}}"
           wx:for-item="record"
           wx:key="id"
           class="record-item"
+          data-id="{{record.id}}"
+          bindtouchstart="touchStart"
+          bindtouchmove="touchMove"
+          bindtouchend="touchEnd"
+          style="transform: translateX({{record.translateX || 0}}px);"
         >
-          <view class="record-info">
-            <text class="record-name">{{record.name}}</text>
-            <view class="record-nutrition">
-              <text class="nutrition-tag">{{record.calories}}千卡</text>
-              <text class="nutrition-tag" wx:if="{{record.protein}}">蛋{{record.protein}}g</text>
-              <text class="nutrition-tag" wx:if="{{record.carbs}}">碳{{record.carbs}}g</text>
-              <text class="nutrition-tag" wx:if="{{record.fat}}">脂{{record.fat}}g</text>
+          <view class="record-content">
+            <view class="record-info">
+              <text class="record-name">{{record.name}}</text>
+              <view class="record-nutrition">
+                <text class="nutrition-tag">{{record.calories}}千卡</text>
+                <text class="nutrition-tag" wx:if="{{record.protein}}">蛋{{record.protein}}g</text>
+                <text class="nutrition-tag" wx:if="{{record.carbs}}">碳{{record.carbs}}g</text>
+                <text class="nutrition-tag" wx:if="{{record.fat}}">脂{{record.fat}}g</text>
+              </view>
             </view>
           </view>
-          <view class="record-actions">
-            <text class="delete-btn" data-id="{{record.id}}" bindtap="deleteRecord">删除</text>
+          <view class="record-delete" data-id="{{record.id}}" bindtap="deleteRecord">
+            <text class="delete-text">删除</text>
           </view>
         </view>
       </view>
@@ -103,7 +110,7 @@
       <!-- 添加按钮 -->
       <view class="add-btn" data-meal-type="{{mealType}}" bindtap="addDietRecord">
         <text class="add-icon">+</text>
-        <text class="add-text">添加{{mealTypes[mealType].label}}</text>
+        <text class="add-text">添加{{mealData[mealType].label}}</text>
       </view>
     </view>
   </view>

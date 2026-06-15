@@ -2,20 +2,23 @@
 
 /* 欢迎区域 */
 .welcome-section {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  padding-top: 8px;
 }
 
 .welcome-date {
   display: block;
-  font-size: 13px;
+  font-size: 14px;
   color: #7F8C8D;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  line-height: 1.4;
 }
 
 .welcome-text {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   color: #2C3E50;
+  line-height: 1.4;
 }
 
 /* 今日概览卡片 */
@@ -55,9 +58,10 @@
 }
 
 .overview-value {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.2;
+  margin-top: 4px;
 }
 
 .overview-value.negative {
@@ -65,9 +69,10 @@
 }
 
 .overview-label {
-  font-size: 12px;
-  opacity: 0.8;
-  margin-top: 4px;
+  font-size: 13px;
+  opacity: 0.9;
+  margin-top: 6px;
+  line-height: 1.4;
 }
 
 .overview-divider {

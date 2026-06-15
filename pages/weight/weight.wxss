@@ -4,9 +4,10 @@
 .current-weight-card {
   background: linear-gradient(135deg, #2ECC71 0%, #27AE60 100%);
   border-radius: 16px;
-  padding: 24px;
+  padding: 28px 24px;
   text-align: center;
   margin-bottom: 12px;
+  margin-top: 8px;
   color: #FFFFFF;
 }
 
@@ -20,7 +21,7 @@
 .weight-value {
   font-size: 48px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .weight-unit {
@@ -63,8 +64,9 @@
 }
 
 .change-label {
-  font-size: 12px;
-  opacity: 0.7;
+  font-size: 13px;
+  opacity: 0.8;
+  line-height: 1.4;
 }
 
 .weight-target {

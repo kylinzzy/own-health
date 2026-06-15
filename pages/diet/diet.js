@@ -36,13 +36,27 @@ Page({
    * 加载数据
    */
   loadData() {
-    const { currentDate } = this.data;
+    const { currentDate, mealOrder, mealTypes } = this.data;
     const allRecords = storage.get('diet_records', []);
-    
+
     // 筛选当前日期的记录
     const dietRecords = allRecords.filter(r => r.date === currentDate);
-    
-    this.setData({ dietRecords });
+
+    // 预计算每个餐次的数据（WXML中不能调用方法）
+    const mealData = {};
+    mealOrder.forEach(mealType => {
+      const records = dietRecords.filter(r => r.mealType === mealType);
+      const calories = records.reduce((sum, r) => sum + (r.calories || 0), 0);
+      mealData[mealType] = {
+        records,
+        calories,
+        icon: mealTypes[mealType] ? mealTypes[mealType].icon : '',
+        label: mealTypes[mealType] ? mealTypes[mealType].label : mealType,
+        time: mealTypes[mealType] ? mealTypes[mealType].time : ''
+      };
+    });
+
+    this.setData({ dietRecords, mealData });
     this.calculateDailyStats();
   },
 
@@ -112,21 +126,7 @@ Page({
     this.loadData();
   },
 
-  /**
-   * 获取某餐次的记录
-   */
-  getMealRecords(mealType) {
-    const { dietRecords } = this.data;
-    return dietRecords.filter(r => r.mealType === mealType);
-  },
-
-  /**
-   * 获取某餐次的总热量
-   */
-  getMealCalories(mealType) {
-    const records = this.getMealRecords(mealType);
-    return records.reduce((sum, r) => sum + (r.calories || 0), 0);
-  },
+  // getMealRecords和getMealCalories已合并到loadData中的mealData预计算
 
   /**
    * 添加饮食记录
@@ -158,7 +158,7 @@ Page({
    */
   deleteRecord(e) {
     const { id } = e.currentTarget.dataset;
-    
+
     wx.showModal({
       title: '确认删除',
       content: '确定要删除这条饮食记录吗？',
@@ -167,12 +167,67 @@ Page({
           let records = storage.get('diet_records', []);
           records = records.filter(r => r.id !== id);
           storage.set('diet_records', records);
-          
+
           this.loadData();
           wx.showToast({ title: '已删除', icon: 'success' });
         }
       }
     });
+  },
+
+  /**
+   * 触摸开始
+   */
+  touchStart(e) {
+    const { id } = e.currentTarget.dataset;
+    this.touchStartX = e.touches[0].clientX;
+    this.touchRecordId = id;
+  },
+
+  /**
+   * 触摸移动
+   */
+  touchMove(e) {
+    if (!this.touchStartX) return;
+    const moveX = e.touches[0].clientX;
+    const diff = moveX - this.touchStartX;
+    // 限制滑动范围 -80 到 0
+    const translateX = Math.max(-80, Math.min(0, diff));
+
+    const { mealData } = this.data;
+    const newMealData = {};
+    Object.keys(mealData).forEach(key => {
+      newMealData[key] = {
+        ...mealData[key],
+        records: mealData[key].records.map(r => ({
+          ...r,
+          translateX: r.id === this.touchRecordId ? translateX : (r.translateX || 0)
+        }))
+      };
+    });
+    this.setData({ mealData: newMealData });
+  },
+
+  /**
+   * 触摸结束
+   */
+  touchEnd(e) {
+    const { mealData } = this.data;
+    const newMealData = {};
+    Object.keys(mealData).forEach(key => {
+      newMealData[key] = {
+        ...mealData[key],
+        records: mealData[key].records.map(r => {
+          const currentX = r.translateX || 0;
+          // 滑动超过一半显示删除按钮，否则收起
+          const translateX = currentX < -40 ? -80 : 0;
+          return { ...r, translateX };
+        })
+      };
+    });
+    this.setData({ mealData: newMealData });
+    this.touchStartX = null;
+    this.touchRecordId = null;
   },
 
   /**
