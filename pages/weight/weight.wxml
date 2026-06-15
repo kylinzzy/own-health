@@ -18,7 +18,7 @@
       <text class="target-label">目标体重</text>
       <text class="target-value">{{settings.targetWeight}}kg</text>
       <text class="target-diff" wx:if="{{stats.current}}">
-        还差{{(stats.current - settings.targetWeight).toFixed(1)}}kg
+        还差{{stats.targetDiff}}kg
       </text>
     </view>
   </view>

@@ -132,9 +132,10 @@ Page({
     const lowest = Math.min(...weights);
     const first = weights[0];
     const change = parseFloat((current - first).toFixed(1));
+    const targetDiff = settings.targetWeight ? parseFloat((current - settings.targetWeight).toFixed(1)) : null;
 
     this.setData({
-      stats: { current, highest, lowest, change }
+      stats: { current, highest, lowest, change, targetDiff }
     });
   },
 
