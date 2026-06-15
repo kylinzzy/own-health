@@ -28,33 +28,23 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "assets/icons/home.png",
-        "selectedIconPath": "assets/icons/home-active.png"
+        "text": "首页"
       },
       {
         "pagePath": "pages/weight/weight",
-        "text": "体重",
-        "iconPath": "assets/icons/weight.png",
-        "selectedIconPath": "assets/icons/weight-active.png"
+        "text": "体重"
       },
       {
         "pagePath": "pages/diet/diet",
-        "text": "饮食",
-        "iconPath": "assets/icons/diet.png",
-        "selectedIconPath": "assets/icons/diet-active.png"
+        "text": "饮食"
       },
       {
         "pagePath": "pages/exercise/exercise",
-        "text": "运动",
-        "iconPath": "assets/icons/exercise.png",
-        "selectedIconPath": "assets/icons/exercise-active.png"
+        "text": "运动"
       },
       {
         "pagePath": "pages/analysis/analysis",
-        "text": "分析",
-        "iconPath": "assets/icons/analysis.png",
-        "selectedIconPath": "assets/icons/analysis-active.png"
+        "text": "分析"
       }
     ]
   },
