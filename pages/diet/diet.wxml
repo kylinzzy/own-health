@@ -31,7 +31,7 @@
           <text>{{dailyStats.totalProtein}}g</text>
         </view>
         <view class="bar-track">
-          <view class="bar-fill protein" style="width: {{Math.min(100, (dailyStats.totalProtein / 60) * 100)}}%"></view>
+          <view class="bar-fill protein" style="width: {{proteinPercent}}%"></view>
         </view>
       </view>
       <view class="nutrition-bar-item">
@@ -40,7 +40,7 @@
           <text>{{dailyStats.totalCarbs}}g</text>
         </view>
         <view class="bar-track">
-          <view class="bar-fill carbs" style="width: {{Math.min(100, (dailyStats.totalCarbs / 250) * 100)}}%"></view>
+          <view class="bar-fill carbs" style="width: {{carbsPercent}}%"></view>
         </view>
       </view>
       <view class="nutrition-bar-item">
@@ -49,7 +49,7 @@
           <text>{{dailyStats.totalFat}}g</text>
         </view>
         <view class="bar-track">
-          <view class="bar-fill fat" style="width: {{Math.min(100, (dailyStats.totalFat / 60) * 100)}}%"></view>
+          <view class="bar-fill fat" style="width: {{fatPercent}}%"></view>
         </view>
       </view>
     </view>

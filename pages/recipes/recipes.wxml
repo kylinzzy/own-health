@@ -89,7 +89,7 @@
         <view class="recipe-info">
           <text class="recipe-name">{{item.name}}</text>
           <view class="recipe-meta">
-            <text class="meal-type">{{mealTypes.find(m => m.key === item.mealType)?.label || item.mealType}}</text>
+            <text class="meal-type">{{item.mealTypeLabel}}</text>
             <text class="prep-time">⏱️ {{item.prepTime}}分钟</text>
             <text class="difficulty">{{item.difficulty}}</text>
           </view>
@@ -125,13 +125,13 @@
           wx:key="tag"
           class="tag tag-primary"
         >
-          {{tags.find(t => t.key === tag)?.label || tag}}
+          {{tag.label}}
         </text>
       </view>
 
       <view class="recipe-ingredients">
         <text class="ingredients-label">食材：</text>
-        <text class="ingredients-text">{{item.ingredients.map(i => i.name).join('、')}}</text>
+        <text class="ingredients-text">{{item.ingredientNames}}</text>
       </view>
     </view>
   </view>

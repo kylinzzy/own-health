@@ -68,7 +68,7 @@
         wx:key="id"
         class="exercise-item"
       >
-        <view class="exercise-icon">{{exerciseTypes[item.type]?.icon || '⭐'}}</view>
+        <view class="exercise-icon">{{exerciseTypes[item.type].icon || '⭐'}}</view>
         <view class="exercise-info">
           <text class="exercise-name">{{item.name}}</text>
           <view class="exercise-meta">

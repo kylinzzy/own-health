@@ -32,7 +32,12 @@ Page({
   loadRecipe(id) {
     const recipe = RECIPES.find(r => r.id === id);
     if (recipe) {
-      this.setData({ recipe });
+      const mealTypeLabel = MEAL_TYPES[recipe.mealType] ? MEAL_TYPES[recipe.mealType].label : recipe.mealType;
+      const tagLabels = {};
+      recipe.tags.forEach(tag => {
+        tagLabels[tag] = RECIPE_TAGS[tag] ? RECIPE_TAGS[tag].label : tag;
+      });
+      this.setData({ recipe, mealTypeLabel, tagLabels });
       wx.setNavigationBarTitle({ title: recipe.name });
     }
   },

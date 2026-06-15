@@ -48,10 +48,16 @@ Page({
    */
   loadData() {
     const favorites = storage.get('favorite_recipes', []);
+    const recipes = RECIPES.map(r => ({
+      ...r,
+      mealTypeLabel: MEAL_TYPES[r.mealType] ? MEAL_TYPES[r.mealType].label : r.mealType,
+      tagList: r.tags.map(tag => ({ key: tag, label: RECIPE_TAGS[tag] ? RECIPE_TAGS[tag].label : tag })),
+      ingredientNames: r.ingredients.map(i => i.name).join('、')
+    }));
     this.setData({
-      recipes: RECIPES,
+      recipes,
       favorites,
-      filteredRecipes: RECIPES
+      filteredRecipes: recipes
     });
   },
 

@@ -64,7 +64,11 @@ Page({
       totalFat: 0
     });
 
-    this.setData({ dailyStats: stats });
+    const proteinPercent = Math.min(100, Math.round((stats.totalProtein / 60) * 100));
+    const carbsPercent = Math.min(100, Math.round((stats.totalCarbs / 250) * 100));
+    const fatPercent = Math.min(100, Math.round((stats.totalFat / 60) * 100));
+    
+    this.setData({ dailyStats: stats, proteinPercent, carbsPercent, fatPercent });
   },
 
   /**

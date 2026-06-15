@@ -5,7 +5,7 @@
       <view class="recipe-title-section">
         <text class="recipe-name">{{recipe.name}}</text>
         <view class="recipe-meta">
-          <text class="meal-badge">{{mealTypes[recipe.mealType]?.label || recipe.mealType}}</text>
+          <text class="meal-badge">{{mealTypeLabel}}</text>
           <text class="meta-item">⏱️ {{recipe.prepTime}}分钟</text>
           <text class="meta-item">{{recipe.difficulty}}</text>
         </view>
@@ -48,7 +48,7 @@
         wx:key="tag"
         class="tag tag-primary"
       >
-        {{tags.find(t => t.key === tag)?.label || tag}}
+        {{tagLabels[tag] || tag}}
       </text>
     </view>
   </view>
