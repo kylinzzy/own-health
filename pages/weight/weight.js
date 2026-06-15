@@ -91,17 +91,22 @@ Page({
    */
   drawChart() {
     const { chartData } = this.data;
-    const systemInfo = wx.getSystemInfoSync();
-    const width = systemInfo.windowWidth - 32;
     
-    setTimeout(() => {
-      chartUtil.drawWeightChart({
-        canvasId: 'weightChart',
-        data: chartData,
-        width: width,
-        height: 220
-      });
-    }, 100);
+    try {
+      const systemInfo = wx.getWindowInfo();
+      const width = systemInfo.windowWidth - 32;
+      
+      setTimeout(() => {
+        chartUtil.drawWeightChart({
+          canvasId: 'weightChart',
+          data: chartData,
+          width: width,
+          height: 220
+        });
+      }, 100);
+    } catch (e) {
+      console.error('绘制图表失败:', e);
+    }
   },
 
   /**
@@ -117,7 +122,7 @@ Page({
    * 计算统计数据
    */
   calculateStats() {
-    const { weightRecords } = this.data;
+    const { weightRecords, settings } = this.data;
     
     if (weightRecords.length === 0) {
       this.setData({
@@ -132,7 +137,7 @@ Page({
     const lowest = Math.min(...weights);
     const first = weights[0];
     const change = parseFloat((current - first).toFixed(1));
-    const targetDiff = settings.targetWeight ? parseFloat((current - settings.targetWeight).toFixed(1)) : null;
+    const targetDiff = settings && settings.targetWeight ? parseFloat((current - settings.targetWeight).toFixed(1)) : null;
 
     this.setData({
       stats: { current, highest, lowest, change, targetDiff }
