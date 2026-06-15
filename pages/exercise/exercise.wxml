@@ -30,7 +30,7 @@
     <view class="deficit-hint">
       <text wx:if="{{calorieDeficit < 0}}">🔥 正在燃脂，继续保持！</text>
       <text wx:elif="{{calorieDeficit === 0}}">⚖️ 热量平衡</text>
-      <text wx:else">📈 热量盈余，建议增加运动</text>
+      <text wx:else>热量盈余，建议增加运动</text>
     </view>
   </view>
 
